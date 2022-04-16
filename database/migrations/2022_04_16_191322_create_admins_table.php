@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->string('type')->default('admin');
+            $table->string('name')->notnull();
+            $table->string('email')->unique();
+            $table->string('mobile')->unique();
+            $table->string('password')->notnull();
             $table->timestamps();
         });
     }

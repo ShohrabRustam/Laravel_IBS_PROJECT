@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('company_pilicies', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('companyid');
+            $table->foreign('companyid')->references('id')->on('companies');
+            $table->string('policyname');
+            $table->enum('policytype', ['Health', 'Life', 'Bike','Car']);
+            $table->longText('p_desc');
+            $table->double('p_price');
+            $table->double('c_price');
+            $table->integer('policy_period');
             $table->timestamps();
         });
     }

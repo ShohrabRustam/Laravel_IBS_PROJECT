@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
+            $table->integer('r_no')->unique();
+            $table->string('name');
+            $table->string('logo')->default('https://w7.pngwing.com/pngs/716/176/png-transparent-insurance-agent-health-insurance-life-insurance-vehicle-insurance-business-service-people-logo.png');
+            $table->longText('about');
             $table->timestamps();
         });
     }
