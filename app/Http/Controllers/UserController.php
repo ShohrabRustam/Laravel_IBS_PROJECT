@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         $validators = Validator::make($request->all(), [
             'name' => 'required|alpha',
-            'email' => 'required',
+            'email' => 'required|max:255|max:255|unique:users',
             'mobile' => 'required|min:6000000000|max:9999999999|numeric',
             'password' => 'required|min:6',
             'confirm_password' => 'required_with:password|same:password|min:6'
@@ -31,6 +31,7 @@ class UserController extends Controller
         else {
             $errors= $validators->errors()->all();
             $arr = array('status'=>'false','message'=>$errors,'code'=>108);
+            // var_dump($errors);
 
         }
         // json_decode($arr);
