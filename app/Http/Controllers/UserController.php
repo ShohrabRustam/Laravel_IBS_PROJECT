@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -25,11 +26,31 @@ class UserController extends Controller
             $user->mobile = $request->mobile;
             $user->password = Hash::make($request->password);
             $user->save();
-            return response()->json(['status'=>'true','message'=>'Congratulations! Your account has been Created Successfully !!','code'=>201]);
+            $response = response()->json(['status' => 'true', 'message' => 'Congratulations! Your account has been Created Successfully !!', 'code' => 201]);
+        } else {
+            $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
         }
-        else {
-            return response()->json(['status'=>'false','error'=>$validators->errors()->all(),'status'=>409]);
+        return $response;
+    }
 
+    public function  login(Request $request)
+    {
+
+        $validators = Validator::make($request->all(), [
+            'email' => 'required|max:255|max:255|',
+            'password' => 'required|min:6'
+        ]);
+        if ($validators->passes()) {
+            $user = User::where(['email' => $request->email])->first();
+            if (!$user || !Hash::check($request->password, $user->password)) {
+                $response = response()->json(['status' => 'false', 'message' => 'Email or Password Incorrect !! ', 'code' => 409]);
+            } else {
+                $response = response()->json(['status' => 'true', 'message' => 'Login Successfully  !!', 'code' => 201]);
+            }
+        } else {
+            $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'code' => 201]);
         }
+
+        return $response;
     }
 }
