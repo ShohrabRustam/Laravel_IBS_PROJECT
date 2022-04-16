@@ -26,7 +26,7 @@ class UserController extends Controller
             $user->mobile = $request->mobile;
             $user->password = Hash::make($request->password);
             $user->save();
-            $response = response()->json(['status' => 'true', 'message' => 'Congratulations! Your account has been Created Successfully !!', 'code' => 201]);
+            $response = response()->json(['status' => 'true', 'message' => ' Congratulations! Your account has been Created Successfully !!', 'code' => 201]);
         } else {
             $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
         }
@@ -43,9 +43,9 @@ class UserController extends Controller
         if ($validators->passes()) {
             $user = User::where(['email' => $request->email])->first();
             if (!$user || !Hash::check($request->password, $user->password)) {
-                $response = response()->json(['status' => 'false', 'message' => 'Email or Password Incorrect !! ', 'code' => 409]);
+                $response = response()->json(['status' => 'false', 'message' => ' Email or Password Incorrect !! ', 'code' => 409]);
             } else {
-                $response = response()->json(['status' => 'true', 'message' => 'Login Successfully  !!', 'code' => 201]);
+                $response = response()->json(['status' => 'true', 'message' => ' Login Successfully  !!', 'code' => 201]);
             }
         } else {
             $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'code' => 201]);
@@ -71,7 +71,7 @@ class UserController extends Controller
             $user->mobile = $request->mobile;
             $user->password = Hash::make($request->password);
             $user->save();
-            $response = response()->json(['status' => 'true', 'message' => 'User Update Successfully', 'code' => 201]);
+            $response = response()->json(['status' => 'true', 'message' => ' User Update Successfully', 'code' => 201]);
         } else {
             $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
         }
@@ -91,17 +91,24 @@ class UserController extends Controller
             $user = User::find($request->id);
             if ($user) {
                 $user = User::find($request->id)->delete();
-                $response = response()->json(['status' => 'false', 'message' => "User Delete Successfully !!", 'status' => 201]);
+                $response = response()->json(['status' => 'false', 'message' => " User Delete Successfully !!", 'status' => 201]);
             } else {
-                $response = response()->json(['status' => 'false', 'message' => "User Does not exist ", 'status' => 404]);
+                $response = response()->json(['status' => 'false', 'message' => " User Does not exist ", 'status' => 404]);
             }
         }
         return $response;
     }
 
-    public function users(){
+    public function users()
+    {
         $user=User::all();
-        return $user;
+        if(!$user){
+            $response = response()->json(['status' => 'true', 'message' => " The Table is Empty !!", 'status' => 201]);
+        }else{
+            $response = response()->json(['status' => 'true', 'message' => " All User Details !!", 'status' => 201]);
+        }
+        // return $user;
+        return $response;
 
     }
 
