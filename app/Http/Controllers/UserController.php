@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -26,15 +25,11 @@ class UserController extends Controller
             $user->mobile = $request->mobile;
             $user->password = Hash::make($request->password);
             $user->save();
-            $arr = array('status'=>'true','message'=>'Congratulations! Your account has been Created Successfully !!','code'=>201);
+            return response()->json(['status'=>'true','message'=>'Congratulations! Your account has been Created Successfully !!','code'=>201]);
         }
         else {
-            $errors= $validators->errors()->all();
-            $arr = array('status'=>'false','message'=>$errors,'code'=>108);
-            // var_dump($errors);
+            return response()->json(['status'=>'false','error'=>$validators->errors()->all(),'status'=>409]);
 
         }
-        // json_decode($arr);
-        var_dump(json_decode($arr['status']));
     }
 }
