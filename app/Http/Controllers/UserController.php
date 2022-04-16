@@ -54,6 +54,7 @@ class UserController extends Controller
         return $response;
     }
 
+
     public function update(Request $request)
     {
         $validators = Validator::make($request->all(), [
@@ -62,7 +63,6 @@ class UserController extends Controller
             'email' => 'required|max:255|max:255|unique:users',
             'mobile' => 'required|min:6000000000|max:9999999999|numeric',
             'password' => 'required|min:6',
-            'confirm_password' => 'required_with:password|same:password|min:6'
         ]);
         if ($validators->passes()) {
             $user = User::find($request->id);
@@ -77,6 +77,8 @@ class UserController extends Controller
         }
         return $response;
     }
+
+
 
     public function delete(Request $request)
     {
@@ -96,4 +98,11 @@ class UserController extends Controller
         }
         return $response;
     }
+
+    public function users(){
+        $user=User::all();
+        return $user;
+
+    }
+
 }
