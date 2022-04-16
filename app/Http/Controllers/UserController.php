@@ -25,7 +25,7 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->mobile = $request->mobile;
             $user->password = Hash::make($request->password);
-            // $user->save()
+            $user->save();
             $arr = array('status'=>'true','message'=>'Congratulations! Your account has been Created Successfully !!','code'=>201);
         }
         else {
