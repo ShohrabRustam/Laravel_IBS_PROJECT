@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
+use App\Models\User;
 class UserController extends Controller
 {
     //
     public function signup(Request $request){
+        $user = new User();
         $validators=Validator::make($request->all(),[
             'name'=>'required|alpha',
             'email'=>'required',
