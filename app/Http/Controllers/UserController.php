@@ -25,12 +25,15 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->mobile = $request->mobile;
             $user->password = Hash::make($request->password);
-            $user->save();
-            $arr = "{'status'=>true,'message'=>'Congratulations! Your account has been Created Successfully !!.','code'=>201}";
-        } else {
-            print_r($validators->errors()->all());
-            $arr = "{'status'=>false,'message'=>$validators->errors()->all,'code'=>108}";
+            // $user->save()
+            $arr = array('status'=>'true','message'=>'Congratulations! Your account has been Created Successfully !!','code'=>201);
         }
-        echo json_decode($arr);
+        else {
+            $errors= $validators->errors()->all();
+            $arr = array('status'=>'false','message'=>$errors,'code'=>108);
+
+        }
+        // json_decode($arr);
+        var_dump(json_decode($arr['status']));
     }
 }
