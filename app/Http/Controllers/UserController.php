@@ -10,7 +10,7 @@ class UserController extends Controller
         $validators=Validator::make($request->all(),[
             'name'=>'required|alpha',
             'email'=>'required',
-            'mobile'=>'required|min:10|max:13',
+            'mobile'=>'required|min:6000000000|max:9999999999|numeric',
             'password'=>'required|min:6',
             'confirm_password'=>'required_with:password|same:password|min:6'
         ]);
