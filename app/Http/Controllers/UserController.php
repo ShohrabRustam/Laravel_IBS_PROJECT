@@ -53,4 +53,47 @@ class UserController extends Controller
 
         return $response;
     }
+
+    public function update(Request $request)
+    {
+        $validators = Validator::make($request->all(), [
+            'id' => 'required',
+            'name' => 'required|alpha',
+            'email' => 'required|max:255|max:255|unique:users',
+            'mobile' => 'required|min:6000000000|max:9999999999|numeric',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required_with:password|same:password|min:6'
+        ]);
+        if ($validators->passes()) {
+            $user = User::find($request->id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->mobile = $request->mobile;
+            $user->password = Hash::make($request->password);
+            $user->save();
+            $response = response()->json(['status' => 'true', 'message' => 'User Update Successfully', 'code' => 201]);
+        } else {
+            $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
+        }
+        return $response;
+    }
+
+    public function delete(Request $request)
+    {
+        $validators = Validator::make($request->all(), [
+            'id' => 'required'
+        ]);
+        if ($validators->fails()) {
+            $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
+        } else {
+            $user = User::find($request->id);
+            if ($user) {
+                $user = User::find($request->id)->delete();
+                $response = response()->json(['status' => 'false', 'message' => "User Delete Successfully !!", 'status' => 201]);
+            } else {
+                $response = response()->json(['status' => 'false', 'message' => "User Does not exist ", 'status' => 404]);
+            }
+        }
+        return $response;
+    }
 }
