@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class CompanyPolicyController extends Controller
-{
-    //
+{    //
     public function _register(Request $request)
     {
         $validators = Validator::make($request->all(), [
