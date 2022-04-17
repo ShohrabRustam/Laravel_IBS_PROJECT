@@ -80,6 +80,8 @@ class AdminController extends Controller
         }
         return $response;
     }
+
+
     public function _admin()
     {
         $admin = Admin::all();
@@ -91,4 +93,28 @@ class AdminController extends Controller
         // return $admin;
         return $response;
     }
+
+    public function _update(Request $request)
+    {
+        $validators = Validator::make($request->all(), [
+            'name' => 'required|regex:/^[a-zA-Z\s]+$/',
+            'email' => 'required|max:255',
+            'mobile' => 'required|min:6000000000|max:9999999999|numeric',
+            'password' => 'required|min:6',
+        ]);
+        if ($validators->passes()) {
+            $admin = Admin::find($request->id);
+            $admin->name = $request->name;
+            $admin->email = $request->email;
+            $admin->mobile = $request->mobile;
+            $admin->password = Hash::make($request->password);
+            $admin->save();
+            $response = response()->json(['status' => 'true', 'message' => ' User Update Successfully', 'code' => 201]);
+        } else {
+            $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
+        }
+        return $response;
+    }
+
+
 }
