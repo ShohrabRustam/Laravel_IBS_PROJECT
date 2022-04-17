@@ -60,4 +60,24 @@ class AdminController extends Controller
         return $response;
 
     }
+
+
+    public function _delete(Request $request)
+    {
+        $validators = Validator::make($request->all(), [
+            'id' => 'required'
+        ]);
+        if ($validators->fails()) {
+            $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
+        } else {
+            $admin = Admin::find($request->id);
+            if ($admin) {
+                $admin = Admin::find($request->id)->delete();
+                $response = response()->json(['status' => 'false', 'message' => " User Delete Successfully !!", 'status' => 201]);
+            } else {
+                $response = response()->json(['status' => 'false', 'message' => " User Does not exist ", 'status' => 404]);
+            }
+        }
+        return $response;
+    }
 }
