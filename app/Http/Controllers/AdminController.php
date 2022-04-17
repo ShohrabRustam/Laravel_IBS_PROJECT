@@ -61,7 +61,6 @@ class AdminController extends Controller
 
     }
 
-
     public function _delete(Request $request)
     {
         $validators = Validator::make($request->all(), [
