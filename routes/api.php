@@ -53,6 +53,8 @@ Route::get('companies',[CompanyController::class,'_companies']);
 // Route for the CompanyPolicies
 Route::post('policyRegisteration',[CompanyPolicyController::class,'_register']);
 Route::post('policyUpdate',[CompanyPolicyController::class,'_update']);
+Route::post('deletePolicy',[CompanyPolicyController::class,'_delete']);
+Route::get('policies',[CompanyPolicyController::class,'_policies']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
