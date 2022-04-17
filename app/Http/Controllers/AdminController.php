@@ -72,9 +72,9 @@ class AdminController extends Controller
             $admin = Admin::find($request->id);
             if ($admin) {
                 $admin = Admin::find($request->id)->delete();
-                $response = response()->json(['status' => 'false', 'message' => " User Delete Successfully !!", 'status' => 201]);
+                $response = response()->json(['status' => 'false', 'message' => " Admin Delete Successfully !!", 'status' => 201]);
             } else {
-                $response = response()->json(['status' => 'false', 'message' => " User Does not exist ", 'status' => 404]);
+                $response = response()->json(['status' => 'false', 'message' => " Admin Does not exist ", 'status' => 404]);
             }
         }
         return $response;
@@ -87,7 +87,7 @@ class AdminController extends Controller
         if (!$admin) {
             $response = response()->json(['status' => 'true', 'message' => " The Table is Empty !!", 'status' => 201]);
         } else {
-            $response = response()->json(['status' => 'true', 'message' => " All User Details !!", 'status' => 201]);
+            $response = response()->json(['status' => 'true', 'message' => " All Admins Details !!", 'status' => 201]);
         }
         // return $admin;
         return $response;
