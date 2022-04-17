@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    //
     public function signup(Request $request)
     {
         $validators = Validator::make($request->all(), [
@@ -58,7 +57,7 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $validators = Validator::make($request->all(), [
-            'id' => 'required',
+            'name' => 'required|regex:/^[a-zA-Z\s]+$/',
             'name' => 'required|alpha',
             'email' => 'required|max:255|max:255|unique:users',
             'mobile' => 'required|min:6000000000|max:9999999999|numeric',
