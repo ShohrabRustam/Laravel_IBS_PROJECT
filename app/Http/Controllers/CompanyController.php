@@ -20,9 +20,11 @@ class CompanyController extends Controller
             $company->r_no = $request->r_no;
             $company->name = $request->name;
             $company->about = $request->about;
+            if($request->logo){
             $company->logo = $request->logo;
+            }
             $company->save();
-            return "Done";
+            // return "Done";
             $response = response()->json(['status' => 'true', 'message' => ' Congratulations! Company Resgister Successfully !!', 'code' => 201]);
         } else {
             $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
