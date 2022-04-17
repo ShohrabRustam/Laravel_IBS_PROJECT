@@ -11,7 +11,6 @@ class CompanyPolicyController extends Controller
     //
     public function _register(Request $request)
     {
-
         $validators = Validator::make($request->all(), [
             'companyid' => 'required|exists:companies,id',
             'policyname' => 'required',
