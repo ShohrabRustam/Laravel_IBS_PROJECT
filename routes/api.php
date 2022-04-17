@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\UserController;
 use App\Models\Company;
@@ -43,6 +44,10 @@ Route::post('adminLogin',[AdminController::class,'_login']);
 Route::get('superadminLogout',[UserController::class,'_logout']);
 
 // Route for Company
+Route::post('componayRegistration',[CompanyController::class,'_register']);
+Route::post('companyDelete',[CompanyController::class,'_delete']);
+Route::post('companyUpdate',[CompanyController::class,'_update']);
+Route::post('companies',[CompanyController::class,'_companies']);
 
 
 
