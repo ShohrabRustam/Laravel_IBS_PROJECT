@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('companyid');
             $table->foreign('companyid')->references('id')->on('companies');
+            $table->integer('policy_number')->unique();
             $table->string('policyname');
             $table->enum('policytype', ['Health', 'Life', 'Bike','Car']);
             $table->longText('p_desc');
