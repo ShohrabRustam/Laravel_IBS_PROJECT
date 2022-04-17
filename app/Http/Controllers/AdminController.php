@@ -80,4 +80,15 @@ class AdminController extends Controller
         }
         return $response;
     }
+    public function _admin()
+    {
+        $admin = Admin::all();
+        if (!$admin) {
+            $response = response()->json(['status' => 'true', 'message' => " The Table is Empty !!", 'status' => 201]);
+        } else {
+            $response = response()->json(['status' => 'true', 'message' => " All User Details !!", 'status' => 201]);
+        }
+        // return $admin;
+        return $response;
+    }
 }
