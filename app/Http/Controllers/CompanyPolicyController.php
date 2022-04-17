@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\CompanyPolicy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -60,6 +61,25 @@ class CompanyPolicyController extends Controller
             $response = response()->json(['status' => 'true', 'message' => ' Congratulations! Policy Updated Successfully !!', 'code' => 201]);
         } else {
             $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
+        }
+        return $response;
+    }
+
+    public function _delete(Request $request)
+    {
+        $validators = Validator::make($request->all(), [
+            'id' => 'required'
+        ]);
+        if ($validators->fails()) {
+            $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
+        } else {
+            $policy = CompanyPolicy::find($request->id);
+            if ($policy) {
+                $policy = CompanyPolicy::find($request->id)->delete();
+                $response = response()->json(['status' => 'false', 'message' => " User Delete Successfully !!", 'status' => 201]);
+            } else {
+                $response = response()->json(['status' => 'false', 'message' => " User Does not exist ", 'status' => 404]);
+            }
         }
         return $response;
     }
