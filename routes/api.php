@@ -53,7 +53,6 @@ Route::get('companies',[CompanyController::class,'_companies']);
 // Route for the CompanyPolicies
 Route::post('policyRegisteration',[CompanyPolicyController::class,'_register']);
 
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
