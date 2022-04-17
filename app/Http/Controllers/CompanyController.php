@@ -12,8 +12,8 @@ class CompanyController extends Controller
     {
         $validators = Validator::make($request->all(), [
             'r_no' => 'required|unique:companies',
-            'name' => 'required|regex:/^[a-zA-Z\s]+$/',
-            'about' => 'required'
+            'name' => 'required|min:6',
+            'about' => 'required|min:10'
         ]);
         if ($validators->passes()) {
             $company = new Company();
@@ -36,7 +36,7 @@ class CompanyController extends Controller
         } else {
             $response = response()->json(['status' => 'true', 'message' => " All Company Details !!", 'status' => 201]);
         }
-        // return $admin;
+        // return $companies;
         return $response;
     }
 

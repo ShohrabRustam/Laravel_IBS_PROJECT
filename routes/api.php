@@ -49,6 +49,7 @@ Route::post('companyDelete',[CompanyController::class,'_delete']);
 Route::post('companyUpdate',[CompanyController::class,'_update']);
 Route::get('companies',[CompanyController::class,'_companies']);
 
+// Route for the CompanyPolicies
 
 
 
