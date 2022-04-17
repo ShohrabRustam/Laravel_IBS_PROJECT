@@ -11,7 +11,7 @@ class CompanyController extends Controller
     public function _register(Request $request)
     {
         $validators = Validator::make($request->all(), [
-            'r_no' => 'required|unique:companies',
+            'r_no' => 'required|unique:companies|numeric',
             'name' => 'required|min:6',
             'about' => 'required|min:10'
         ]);
@@ -19,8 +19,10 @@ class CompanyController extends Controller
             $company = new Company();
             $company->r_no = $request->r_no;
             $company->name = $request->name;
+            $company->about = $request->about;
             $company->logo = $request->logo;
             $company->save();
+            return "Done";
             $response = response()->json(['status' => 'true', 'message' => ' Congratulations! Company Resgister Successfully !!', 'code' => 201]);
         } else {
             $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
