@@ -3,41 +3,52 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\SuperAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class SuperAdminController extends Controller
 {
     //
-    public function _adminSignup(Request $request)
+
+    public function _login(Request $request)
     {
+
         $validators = Validator::make($request->all(), [
-            'name' => 'required|regex:/^[a-zA-Z\s]+$/',
-            'email' => 'required|max:255|max:255|unique:users',
-            'mobile' => 'required|min:6000000000|max:9999999999|numeric',
-            'password' => 'required|min:6',
-            'confirm_password' => 'required_with:password|same:password|min:6'
+            'email' => 'required|max:255',
+            'password' => 'required|min:6'
         ]);
         if ($validators->passes()) {
-            $user = new Admin();
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->mobile = $request->mobile;
-            $user->password = Hash::make($request->password);
-            $user->save();
-            $response = response()->json(['status' => 'true', 'message' => ' Congratulations! Your account has been Created Successfully !!', 'code' => 201]);
+            $superAdmin = SuperAdmin::where(['email' => $request->email])->first();
+            if (!$$superAdmin || !Hash::check($request->password, $user->password)) {
+                $response = response()->json(['status' => 'false', 'message' => ' Email or Password Incorrect !! ', 'code' => 409]);
+            } else {
+                $response = response()->json(['status' => 'true', 'message' => ' Login Successfully  !!', 'code' => 201]);
+            }
         } else {
-            $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
+            $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'code' => 201]);
         }
+
         return $response;
 
-        // if (Session::has('user') && Session::get('user')['type'] == 'superadmin') {
-
-        //     return redirect('adminlogin');
+        // $user = SuperAdmin::where(['gmail' => $req->gmail])->first();
+        // if (!$user || ($req->password != $user->password)) {
+        //     // return 'hello';
+        //     return back()->with("fail", "Email or Password is not Match");
         // } else {
-        //     return redirect('superadminlogin');
+        //     $req->session()->put('user', $user);
+        //     return redirect('superadminhome');
         // }
     }
+
+    public function superadminlogout()
+    {
+
+        // Session::forget('user');
+        // return redirect('superadminlogin');
+    }
+
 
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\UserController;
 use App\Models\SuperAdmin;
@@ -28,8 +29,8 @@ Route::get('users',[UserController::class,'_users']);
 
 // Route for the SuperAdminController
 
-Route::post('adminsignup',[SuperAdminController::class,'_adminSignup']);
-Route::post('superadminLogin',[SuperAdminController::class,'_superadminLogin']);
+Route::post('adminSignup',[AdminController::class,'_adminSignup']);
+Route::post('superadminLogin',[SuperAdminController::class,'_login']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
