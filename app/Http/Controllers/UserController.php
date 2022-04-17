@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class UserController extends Controller
 {
@@ -105,5 +106,24 @@ class UserController extends Controller
         }
         // return $user;
         return $response;
+    }
+
+    public function _logout()
+    {
+        // if (Session::has('user') && Session::get('user')['type'] == 'user') {
+
+        //     Session::forget('user');
+        //     return redirect('login');
+        // } else if (Session::has('user') && Session::get('user')['type'] == 'admin') {
+
+        //     Session::forget('user');
+        //     return redirect('adminlogin');
+        // } else if (Session::has('user') && Session::get('user')['type'] == 'superadmin') {
+
+        //     Session::forget('user');
+        //     return redirect('/superadminlogin');
+        // } else {
+        //     return redirect('/');
+        // }
     }
 }

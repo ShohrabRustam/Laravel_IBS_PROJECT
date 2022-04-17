@@ -43,7 +43,7 @@ class SuperAdminController extends Controller
         // }
     }
 
-    public function superadminlogout()
+    public function _logout()
     {
 
         // Session::forget('user');

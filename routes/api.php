@@ -26,15 +26,21 @@ Route::post('update',[UserController::class,'_update']);
 Route::post('delete',[UserController::class,'_delete']);
 Route::post('signup',[UserController::class,'_signup']);
 Route::get('users',[UserController::class,'_users']);
+Route::get('userLogout',[UserController::class,'_logout']);
 
 // Route for the SuperAdminController
 
-Route::post('adminSignup',[AdminController::class,'_adminSignup']);
+Route::post('adminSignup',[AdminController::class,'_signup']);
 Route::post('superadminLogin',[SuperAdminController::class,'_login']);
-
+Route::post('adminUpdate',[UserController::class,'_update']);
+Route::post('adminDelete',[UserController::class,'_delete']);
+Route::post('adminSignup',[UserController::class,'_signup']);
+Route::get('adminLogout',[UserController::class,'_logout']);
 
 // Route for Admin
 Route::post('adminLogin',[AdminController::class,'_login']);
+Route::get('superadminLogout',[UserController::class,'_logout']);
+
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

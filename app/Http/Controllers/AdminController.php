@@ -6,10 +6,11 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class AdminController extends Controller
 {
-    public function _adminSignup(Request $request)
+    public function _signup(Request $request)
     {
         $validators = Validator::make($request->all(), [
             'name' => 'required|regex:/^[a-zA-Z\s]+$/',
@@ -58,7 +59,6 @@ class AdminController extends Controller
         }
 
         return $response;
-
     }
 
     public function _delete(Request $request)
@@ -81,7 +81,7 @@ class AdminController extends Controller
     }
 
 
-    public function _admin()
+    public function _admins()
     {
         $admin = Admin::all();
         if (!$admin) {
@@ -116,4 +116,16 @@ class AdminController extends Controller
     }
 
 
+    public function _logout()
+    {
+
+        // if (Session::has('user') && Session::get('user')['type'] == 'superadmin') {
+
+        //     Session::forget('user');
+        //     return redirect('/superadminlogin');
+        // } else {
+        //     Session::forget('user');
+        //     return redirect('/adminlogin');
+        // }
+    }
 }
