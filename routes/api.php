@@ -32,6 +32,11 @@ Route::get('users',[UserController::class,'_users']);
 Route::post('adminSignup',[AdminController::class,'_adminSignup']);
 Route::post('superadminLogin',[SuperAdminController::class,'_login']);
 
+
+// Route for Admin
+Route::post('adminLogin',[AdminController::class,'_login']);
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

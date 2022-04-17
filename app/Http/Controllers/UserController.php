@@ -58,7 +58,6 @@ class UserController extends Controller
     {
         $validators = Validator::make($request->all(), [
             'name' => 'required|regex:/^[a-zA-Z\s]+$/',
-            'name' => 'required|alpha',
             'email' => 'required|max:255',
             'mobile' => 'required|min:6000000000|max:9999999999|numeric',
             'password' => 'required|min:6',
@@ -98,15 +97,13 @@ class UserController extends Controller
 
     public function _users()
     {
-        $user=User::all();
-        if(!$user){
+        $user = User::all();
+        if (!$user) {
             $response = response()->json(['status' => 'true', 'message' => " The Table is Empty !!", 'status' => 201]);
-        }else{
+        } else {
             $response = response()->json(['status' => 'true', 'message' => " All User Details !!", 'status' => 201]);
         }
         // return $user;
         return $response;
-
     }
-
 }
