@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\UserController;
+use App\Models\Company;
 use App\Models\SuperAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,8 @@ Route::get('adminLogout',[UserController::class,'_logout']);
 // Route for Admin
 Route::post('adminLogin',[AdminController::class,'_login']);
 Route::get('superadminLogout',[UserController::class,'_logout']);
+
+// Route for Company
 
 
 
