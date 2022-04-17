@@ -22,7 +22,7 @@ class SuperAdminController extends Controller
         ]);
         if ($validators->passes()) {
             $superAdmin = SuperAdmin::where(['email' => $request->email])->first();
-            if (!$$superAdmin || !Hash::check($request->password, $user->password)) {
+            if (!$superAdmin || ($request->password!=$superAdmin->password)) {
                 $response = response()->json(['status' => 'false', 'message' => ' Email or Password Incorrect !! ', 'code' => 409]);
             } else {
                 $response = response()->json(['status' => 'true', 'message' => ' Login Successfully  !!', 'code' => 201]);
