@@ -13,7 +13,7 @@ class UserController extends Controller
     public function signup(Request $request)
     {
         $validators = Validator::make($request->all(), [
-            'name' => 'required|alpha',
+            'name' => 'required|regex:/^[a-zA-Z\s]+$/',
             'email' => 'required|max:255|max:255|unique:users',
             'mobile' => 'required|min:6000000000|max:9999999999|numeric',
             'password' => 'required|min:6',
