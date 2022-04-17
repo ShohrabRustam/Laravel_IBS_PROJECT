@@ -47,7 +47,8 @@ Route::get('superadminLogout',[UserController::class,'_logout']);
 Route::post('componayRegistration',[CompanyController::class,'_register']);
 Route::post('companyDelete',[CompanyController::class,'_delete']);
 Route::post('companyUpdate',[CompanyController::class,'_update']);
-Route::post('companies',[CompanyController::class,'_companies']);
+Route::get('companies',[CompanyController::class,'_companies']);
+
 
 
 
