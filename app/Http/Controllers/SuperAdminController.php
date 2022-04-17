@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class SuperAdminController extends Controller
 {
     //
-    public function adminsignup(Request $request)
+    public function _adminSignup(Request $request)
     {
         $validators = Validator::make($request->all(), [
             'name' => 'required|regex:/^[a-zA-Z\s]+$/',

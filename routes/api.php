@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\UserController;
+use App\Models\SuperAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,16 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('demo',[UserController::class,'demo']);
-Route::post('signup',[UserController::class,'signup']);
-Route::post('login',[UserController::class,'login']);
-Route::post('update',[UserController::class,'update']);
-Route::post('delete',[UserController::class,'delete']);
-Route::post('signup',[UserController::class,'signup']);
-Route::get('users',[UserController::class,'users']);
+// Route for the User
 
+Route::post('signup',[UserController::class,'_signup']);
+Route::post('login',[UserController::class,'_login']);
+Route::post('update',[UserController::class,'_update']);
+Route::post('delete',[UserController::class,'_delete']);
+Route::post('signup',[UserController::class,'_signup']);
+Route::get('users',[UserController::class,'_users']);
 
+// Route for the SuperAdminController
 
+Route::post('adminsignup',[SuperAdminController::class,'_adminSignup']);
+Route::post('superadminLogin',[SuperAdminController::class,'_superadminLogin']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

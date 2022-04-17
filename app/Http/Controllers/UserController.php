@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function signup(Request $request)
+    public function _signup(Request $request)
     {
         $validators = Validator::make($request->all(), [
             'name' => 'required|regex:/^[a-zA-Z\s]+$/',
@@ -32,7 +32,7 @@ class UserController extends Controller
         return $response;
     }
 
-    public function  login(Request $request)
+    public function  _login(Request $request)
     {
 
         $validators = Validator::make($request->all(), [
@@ -54,7 +54,7 @@ class UserController extends Controller
     }
 
 
-    public function update(Request $request)
+    public function _update(Request $request)
     {
         $validators = Validator::make($request->all(), [
             'name' => 'required|regex:/^[a-zA-Z\s]+$/',
@@ -77,9 +77,7 @@ class UserController extends Controller
         return $response;
     }
 
-
-
-    public function delete(Request $request)
+    public function _delete(Request $request)
     {
         $validators = Validator::make($request->all(), [
             'id' => 'required'
@@ -98,7 +96,7 @@ class UserController extends Controller
         return $response;
     }
 
-    public function users()
+    public function _users()
     {
         $user=User::all();
         if(!$user){
