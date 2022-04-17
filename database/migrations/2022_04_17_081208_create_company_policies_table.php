@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('companyid');
             $table->foreign('companyid')->references('id')->on('companies');
-            $table->integer('policy_number')->unique();
             $table->string('policyname');
             $table->enum('policytype', ['Health', 'Life', 'Bike','Car']);
             $table->longText('p_desc');
             $table->double('p_price');
             $table->double('c_price');
             $table->integer('policy_period');
+            $table->unique(["companyid", "policyname","policy_period","c_price"], 'unique');
             $table->timestamps();
         });
     }

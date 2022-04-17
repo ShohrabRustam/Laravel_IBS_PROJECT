@@ -17,7 +17,7 @@ class CompanyPolicyController extends Controller
             'policydesc' => 'required',
             'policyprice' => 'required',
             'claimprice' => 'required',
-            'timeperiod' => 'required'
+            'timeperiod' => 'required',
         ]);
         if ($validators->passes()) {
             $policy = new CompanyPolicy();
