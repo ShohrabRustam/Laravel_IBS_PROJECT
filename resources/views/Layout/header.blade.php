@@ -11,11 +11,11 @@
         <li class="nav-item"><a href="{{ url('/') }}">Home</a></li>
         <li class="nav-item"><a href="{{ url('/about') }}">About</a></li>
         <li class="nav-item"><a href="{{ url('/contact') }}">Contact</a></li>
-        <li class="nav-item"><a href="{{ url('/help') }}">Help</a></li>
-        <li class="nav-item"><a href="{{ url('/contact') }}">Contact Us</a></li>
-        <li class="nav-item"><a href="{{ url('/contact') }}">Login</a></li>
+        <li class="nav-item"><a href="{{ url('/help') }}" style="margin-left: 10px">Help</a></li>
+        <li class="nav-item"><a href="{{ url('/login') }}">Login</a></li>
+        <li class="nav-item"><a href="{{ url('/login') }}">Signup</a></li>
         {{-- <li class="nav-item"><a href="{{ url('/contact') }}">Contact Us</a></li> --}}
-        <i class="fas fa-search" id="search-icon"></i>
-        <input class="search-input" type="text" placeholder="Search..">
+        {{-- <i class="fas fa-search" id="search-icon"></i>
+        <input class="search-input" type="text" placeholder="Search.."> --}}
     </ul>
 </nav>
