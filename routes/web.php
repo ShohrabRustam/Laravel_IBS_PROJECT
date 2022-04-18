@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDaskboardController;
 use App\Http\Controllers\DeskboardCommonController;
 use App\Http\Controllers\HelpController;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,6 @@ Route::get('/lifeInsurance',[DeskboardCommonController::class,'_life']);
 Route::get('/healthInsurance',[DeskboardCommonController::class,'_health']);
 Route::get('/carInsurance',[DeskboardCommonController::class,'_car']);
 Route::get('/bikeInsurance',[DeskboardCommonController::class,'_bike']);
+
+
+Route::get('/adminHome',[AdminDaskboardController::class,'_index']);
