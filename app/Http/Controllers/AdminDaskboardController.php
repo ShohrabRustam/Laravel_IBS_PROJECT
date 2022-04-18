@@ -14,4 +14,18 @@ class AdminDaskboardController extends Controller
     public function _login(){
         return view('Admin.login');
     }
+
+    public function _addCompany(){
+        return view('Admin.company');
+    }
+
+
+    public function _request(){
+        return view('Admin.request');
+    }
+
+
+    public function _claim(){
+        return view('Admin.claim');
+    }
 }

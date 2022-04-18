@@ -31,3 +31,6 @@ Route::get('/bikeInsurance',[DeskboardCommonController::class,'_bike']);
 
 Route::get('/adminHome',[AdminDaskboardController::class,'_index']);
 Route::get('/adminLogin',[AdminDaskboardController::class,'_login']);
+Route::get('/requestPage',[AdminDaskboardController::class,'_request']);
+Route::get('/addCompany',[AdminDaskboardController::class,'_addCompany']);
+Route::get('/claimPage',[AdminDaskboardController::class,'_claim']);
