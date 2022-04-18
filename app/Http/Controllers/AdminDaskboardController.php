@@ -28,4 +28,24 @@ class AdminDaskboardController extends Controller
     public function _claim(){
         return view('Admin.claim');
     }
+
+    public function _homeSuperadmin(){
+        return view('SuperAdmin.home');
+    }
+
+    public function _users(){
+        return view('SuperAdmin.users');
+    }
+
+    public function _admins(){
+        return view('SuperAdmin.admins');
+    }
+
+    public function _loginSuperadmin(){
+        return view('SuperAdmin.login');
+    }
+
+    public function _signupAdmin(){
+        return view('SuperAdmin.signupAdmin');
+    }
 }

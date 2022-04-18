@@ -34,3 +34,11 @@ Route::get('/adminLogin',[AdminDaskboardController::class,'_login']);
 Route::get('/requestPage',[AdminDaskboardController::class,'_request']);
 Route::get('/addCompany',[AdminDaskboardController::class,'_addCompany']);
 Route::get('/claimPage',[AdminDaskboardController::class,'_claim']);
+
+
+Route::get('/superAdminHome',[AdminDaskboardController::class,'_homeSuperadmin']);
+Route::get('/users',[AdminDaskboardController::class,'_users']);
+Route::get('/admins',[AdminDaskboardController::class,'_admins']);
+Route::get('/superAdminLogin',[AdminDaskboardController::class,'_loginSuperadmin']);
+Route::get('/adminSignup',[AdminDaskboardController::class,'_signupAdmin']);
+
