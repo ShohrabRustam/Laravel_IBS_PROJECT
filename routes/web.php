@@ -21,3 +21,4 @@ Route::get('/about',[DeskboardCommonController::class,'_about']);
 Route::get('/help',[DeskboardCommonController::class,'_help']);
 Route::post('/help',[HelpController::class,'_help']);
 Route::get('/signup',[DeskboardCommonController::class,'_signup']);
+Route::get('/login',[DeskboardCommonController::class,'_login']);

@@ -28,4 +28,8 @@ class DeskboardCommonController extends Controller
     public function _signup(){
         return view('Users.signup');
     }
+
+    public function _login(){
+        return view('Users.login');
+    }
 }
