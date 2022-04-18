@@ -43,3 +43,8 @@
     @include('Layout.footer')
 </body>
 </html>
+<style>
+    .features{
+        min-height: 340px;
+    }
+</style>
