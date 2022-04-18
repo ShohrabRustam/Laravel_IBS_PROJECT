@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class HelpController extends Controller
 {
     //
-    public function help(Request $request){
+    public function _help(Request $request){
         $validators= Validator::make($request->all(),[
             'name'=>'required|regex:/^[a-zA-Z\s]+$/',
             'email'=>'required|email',

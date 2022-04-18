@@ -1,8 +1,7 @@
 @extends('Layout.master')
 @section('title')
-    Help
+    SignUp
 @endsection
-
 @section('section')
     <div class="container py-3">
 
@@ -13,10 +12,11 @@
                 <!-- form contact -->
                 <div class="card card-outline-secondary">
                     <div class="card-header">
-                        <h3 class="mb-0">Send Us Message For Any Help</h3>
+                        <h3 class="mb-0">Register With Us</h3>
                     </div>
                     <div class="card-body">
-                        <form autocomplete="off" action=" {{ URL::to('/help') }} "  method="POST" class="form" role="form">
+                        <form autocomplete="off" action=" {{ URL::to('/signup') }} " method="POST" class="form"
+                            role="form">
                             @csrf
                             <fieldset>
                                 <label class="mb-0" for="name2">Name</label>
@@ -31,13 +31,21 @@
                                         <input class="form-control" id="email2" name="email" required="" type="email">
                                     </div>
                                 </div>
-                                <label class="mb-0" for="message2">Message</label>
+
+                                <label class="mb-0" for="password2">Password</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <textarea class="form-control" id="message2" name="message" required="" rows="6"></textarea>
+                                        <input class="form-control" id="password2" name="password" required="" type="password">
                                     </div>
                                 </div>
-                                <button class="btn btn-secondary btn-lg float-right" type="submit">Send Message</button>
+
+                                <label class="mb-0" for="confirm_password">Confirm Password</label>
+                                <div class="row mb-1">
+                                    <div class="col-lg-12">
+                                        <input class="form-control" id="comfirm_password" name="confirm_password" required="" type="password">
+                                    </div>
+                                </div>
+                                <button class="btn btn-secondary btn-lg float-right" type="submit">Signup</button>
                             </fieldset>
                         </form>
                     </div>

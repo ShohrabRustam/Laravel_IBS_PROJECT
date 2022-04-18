@@ -7,21 +7,25 @@ use Illuminate\Http\Request;
 class DeskboardCommonController extends Controller
 {
     //
-    public function index()
+    public function _index()
     {
         return view('Users.home');
     }
 
-    public function contact(){
+    public function _contact(){
         return view('Users.contact');
     }
 
-    public function about(){
+    public function _about(){
         return view('Users.about');
     }
 
-    public function help()
+    public function _help()
     {
         return view('Users.help');
+    }
+
+    public function _signup(){
+        return view('Users.signup');
     }
 }
