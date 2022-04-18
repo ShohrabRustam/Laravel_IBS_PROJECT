@@ -16,7 +16,8 @@
                         <h3 class="mb-0">Send Us Message For Any Help</h3>
                     </div>
                     <div class="card-body">
-                        <form autocomplete="off" class="form" role="form">
+                        <form autocomplete="off"  method="POST" class="form" role="form">
+                            @csrf
                             <fieldset>
                                 <label class="mb-0" for="name2">Name</label>
                                 <div class="row mb-1">
