@@ -35,16 +35,19 @@
                                 <label class="mb-0" for="password2">Password</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control" id="password2" name="password" required="" type="password">
+                                        <input class="form-control" id="password2" name="password" required=""
+                                            type="password">
                                     </div>
                                 </div>
 
                                 <label class="mb-0" for="confirm_password">Confirm Password</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control" id="comfirm_password" name="confirm_password" required="" type="password">
+                                        <input class="form-control" id="comfirm_password" name="confirm_password"
+                                            required="" type="password">
                                     </div>
                                 </div>
+                                <br>
                                 <button class="btn btn-secondary btn-lg float-right" type="submit">Signup</button>
                             </fieldset>
                         </form>
@@ -79,5 +82,17 @@
             display: none;
         }
 
+        button:hover {
+            background: #03e9f4;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 100px #03e9f4;
+            top: 0;
+            background: linear-gradient(90deg, transparent, #03e9f4);
+            animation: btn-anim1 1s linear infinite;
+        }
     </style>
 @endsection
