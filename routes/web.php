@@ -30,3 +30,4 @@ Route::get('/bikeInsurance',[DeskboardCommonController::class,'_bike']);
 
 
 Route::get('/adminHome',[AdminDaskboardController::class,'_index']);
+Route::get('/adminLogin',[AdminDaskboardController::class,'_login']);

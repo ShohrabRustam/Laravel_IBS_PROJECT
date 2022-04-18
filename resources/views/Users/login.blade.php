@@ -56,7 +56,6 @@
 
         body {
             margin: 0;
-            background-color: #ecfab6;
         }
 
         /* Scroll to Top */
