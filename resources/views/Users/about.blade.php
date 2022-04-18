@@ -5,8 +5,7 @@ About
 @section('section')
 <div class="page-header text-center scrap-container">
     <hr size="8">
-    <div class="imgdimres"><img src="http://www.interestingreality.com/wp-content/uploads/2020/01/Insurance-broking.jpg" alt="About mBrockerage" class="page-header imgdimres"
-        height=500px">
+    <div class="imgdimres"><img src="http://www.interestingreality.com/wp-content/uploads/2020/01/Insurance-broking.jpg" alt="About mBrockerage" class="page-header imgdimres" style="max-height:500px; min-width:200px; max-width:500px">
     </div>
     <div style="margin-left:30px; margin-right:30px; text-align:justify; text-justify:inter-word" >
       <p class="aboutPara"> <strong>mBrockage</strong>  is an insurance broker software for insurance brokers enabling in the design of customised and personalised software solutions for customers and insurance management.
@@ -66,7 +65,7 @@ About
         </div>
       </div>
     </div>
-</center>
+    </center>
   </div>
 </div>
 <div class="container clearfix"  >
