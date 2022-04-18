@@ -22,3 +22,7 @@ Route::get('/help',[DeskboardCommonController::class,'_help']);
 Route::post('/help',[HelpController::class,'_help']);
 Route::get('/signup',[DeskboardCommonController::class,'_signup']);
 Route::get('/login',[DeskboardCommonController::class,'_login']);
+Route::get('/lifeInsurance',[DeskboardCommonController::class,'_life']);
+Route::get('/healthInsurance',[DeskboardCommonController::class,'_health']);
+Route::get('/carInsurance',[DeskboardCommonController::class,'_car']);
+Route::get('/bikeInsurance',[DeskboardCommonController::class,'_bike']);
