@@ -1,4 +1,4 @@
-@extends('Admin.master')
+@extends('SuperAdmin.master')
 @section('title')
 Users List
 @endsection
