@@ -331,3 +331,13 @@
 
   }
 
+  .contact h1{
+
+        clear: both;
+        color: gray;
+  }
+  .contact p{
+    clear: both;
+    color: blue;
+}
+

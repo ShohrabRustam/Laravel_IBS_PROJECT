@@ -11,4 +11,8 @@ class DeskboardCommonController extends Controller
     {
         return view('Users.home');
     }
+
+    public function contact(){
+        return view('Users.contact');
+    }
 }
