@@ -1,4 +1,4 @@
-@extends('Admin.master')
+@extends('SuperAdmin.login')
 @section('title')
 Admin Login
 @endsection
