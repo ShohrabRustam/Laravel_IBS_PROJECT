@@ -15,4 +15,8 @@ class DeskboardCommonController extends Controller
     public function contact(){
         return view('Users.contact');
     }
+
+    public function about(){
+        return view('Users.about');
+    }
 }
