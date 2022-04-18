@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [DeskboardCommonController::class,'index']);
 Route::get('/contact', [DeskboardCommonController::class,'contact']);
 Route::get('/about',[DeskboardCommonController::class,'about']);
+Route::get('/help',[DeskboardCommonController::class,'help']);
