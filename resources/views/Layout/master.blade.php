@@ -14,6 +14,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/section.css">
     <title>@yield('title')</title>
 </head>
 <body>
@@ -23,10 +24,14 @@
             @include('Layout.header')
         </div>
         <section class="headline">
+            <div class="bg"></div>
+            <div class="bg bg2"></div>
+            <div class="bg bg3"></div>
+
             <h1>Insurance  Broking System</h1>
-            <p>“Term life insurance is a good defensive game plan”</p>
-            <p>Life insurance offers you Long-term Savings which will give huge benefit later, feel allowed to make inquiry.</p>
-            <p>I don’t call it “Life Insurance,” I call it “Love Insurance.” We buy it because we want to leave a legacy for those we love.</p>
+            <p class="headPara">“Term life insurance is a good defensive game plan”</p>
+            <p class="headPara">Life insurance offers you Long-term Savings which will give huge benefit later, feel allowed to make inquiry.</p>
+            <p class="headPara">I don’t call it “Life Insurance,” I call it “Love Insurance.” We buy it because we want to leave a legacy for those we love.</p>
           </section>
           <section class="features">
               @yield('section')
