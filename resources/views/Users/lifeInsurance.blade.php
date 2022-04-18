@@ -3,5 +3,5 @@
 Life Insurace
 @endsection
 @section('section')
-<h1>Life Insurance</h1>
+<h1 class="custom">Life Insurance</h1>
 @endsection

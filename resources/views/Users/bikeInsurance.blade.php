@@ -3,5 +3,5 @@
 Bike Insurace
 @endsection
 @section('section')
-<h1>Bike Insurance</h1>
+<h1 class="custom">Bike Insurance</h1>
 @endsection
