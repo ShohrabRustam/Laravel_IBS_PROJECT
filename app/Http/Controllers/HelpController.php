@@ -20,7 +20,10 @@ class HelpController extends Controller
         $help->name = $request->name;
         $help->email = $request->email;
         $help->message = $request->message;
-        $help->save();
-        return redirect('/');
+       $response= $help->save();
+       if($response){
+            return back()->with('success','Your Message send us Successfully !!');
+       }
+        return back()->with('fail',"Ohoo, Something wrong ");
     }
 }

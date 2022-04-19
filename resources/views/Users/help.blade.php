@@ -15,6 +15,16 @@
                         <h3 class="mb-0">Send Us Message For Any Help</h3>
                     </div>
                     <div class="card-body">
+                        @if(Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('success') }}
+                    </div>
+                    @endif
+                    @if(Session::has('fail'))
+                    <div class="alert alert-alert" role="alert">
+                        {{ Session::get('fail') }}
+                    </div>
+                    @endif
                         <form autocomplete="off" action=" {{ URL::to('/help') }} " method="POST" class="form"
                             role="form">
                             @csrf
