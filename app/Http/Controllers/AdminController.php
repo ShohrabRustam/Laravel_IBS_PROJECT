@@ -19,18 +19,17 @@ class AdminController extends Controller
             'password' => 'required|min:6',
             'confirm_password' => 'required_with:password|same:password|min:6'
         ]);
-            $user = new Admin();
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->mobile = $request->mobile;
-            $user->password = Hash::make($request->password);
-            $response=$user->save();
-            if($response){
-                return back()->with('success','You have Registered Successfully !!!');
-            }
-            else{
-                return back()->with('fail','Ohooo .. Something Wrong !!');
-            }
+        $user = new Admin();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->mobile = $request->mobile;
+        $user->password = Hash::make($request->password);
+        $response = $user->save();
+        if ($response) {
+            return back()->with('success', 'You have Registered Successfully !!!');
+        } else {
+            return back()->with('fail', 'Ohooo .. Something Wrong !!');
+        }
         // if (Session::has('user') && Session::get('user')['type'] == 'superadmin') {
 
         //     return redirect('adminlogin');
@@ -41,16 +40,15 @@ class AdminController extends Controller
 
     public function  _login(Request $request)
     {
-        $validators =$request->validate( [
+        $validators = $request->validate([
             'email' => 'required|max:255',
             'password' => 'required|min:6'
         ]);
-            $user = Admin::where(['email' => $request->email])->first();
-            if (!$user || !Hash::check($request->password, $user->password)) {
-               return back()->with('fail',"The Email or Password Incorrect !!");
-            }
-            return redirect('/adminHome');
-
+        $user = Admin::where(['email' => $request->email])->first();
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return back()->with('fail', "The Email or Password Incorrect !!");
+        }
+        return redirect('/adminHome');
     }
 
     public function _delete(Request $request)
@@ -76,50 +74,45 @@ class AdminController extends Controller
     public function _admins()
     {
         $admin = Admin::all();
-        if (!$admin) {
-            $response = response()->json(['status' => 'true', 'message' => " The Table is Empty !!", 'status' => 201]);
-        } else {
-            $response = response()->json(['status' => 'true', 'message' => " All Admins Details !!", 'status' => 201]);
-        }
-        // return $admin;
-        return $response;
+
+        return $admin;
     }
 
     public function _update(Request $request)
     {
-        $validators = Validator::make($request->all(), [
+        $validators = $request->validate( [
             'name' => 'required|regex:/^[a-zA-Z\s]+$/',
             'email' => 'required|max:255',
             'mobile' => 'required|min:6000000000|max:9999999999|numeric',
             'password' => 'required|min:6',
         ]);
-        if ($validators->passes()) {
             $admin = Admin::find($request->id);
             $admin->name = $request->name;
             $admin->email = $request->email;
             $admin->mobile = $request->mobile;
             $admin->password = Hash::make($request->password);
             $admin->save();
-            $response = response()->json(['status' => 'true', 'message' => ' User Update Successfully', 'code' => 201]);
-        } else {
-            $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
-        }
-        return $response;
-    }
+          }
 
 
     public function _logout()
     {
 
-        Session::forget('user');
-        return redirect('/adminHome');
-        // if (Session::has('user') && Session::get('user')['type'] == 'superadmin') {
-
-        //     Session::forget('user');
-        //     return redirect('/superadminlogin');
-        // } else {
-        //     Session::forget('user');
-        //     return redirect('/adminlogin');
-        // }
+        if (Session::has('user')) {
+            if (Session::get('user')['type'] === 'user') {
+                Session::forget('user');
+                return redirect('login');
+            }
+            if (Session::get('user')['type'] === 'admin') {
+                Session::forget('user');
+                return redirect('adminLogin');
+            }
+            if (Session::get('user')['type'] === 'superadmin') {
+                Session::forget('user');
+                return redirect('superadminLogin');
+            }
+        } else {
+            return redirect('login');
+        }
     }
 }

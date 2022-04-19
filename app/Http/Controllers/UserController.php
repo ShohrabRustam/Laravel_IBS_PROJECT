@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -18,36 +19,34 @@ class UserController extends Controller
             'password' => 'required|min:6',
             'confirm_password' => 'required_with:password|same:password|min:6'
         ]);
-            $user = new User();
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->mobile = $request->mobile;
-            $user->password = Hash::make($request->password);
-            $response = $user->save();
-            if($response){
-                return back()->with('success','You have Registered Successfully !!!');
-            }
-            else{
-                return back()->with('fail','Ohooo .. Something Wrong !!');
-            }
-
-          }
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->mobile = $request->mobile;
+        $user->password = Hash::make($request->password);
+        $response = $user->save();
+        if ($response) {
+            return back()->with('success', 'You have Registered Successfully !!!');
+        } else {
+            return back()->with('fail', 'Ohooo .. Something Wrong !!');
+        }
+    }
 
     public function  _login(Request $request)
     {
 
-        $validators =$request->validate( [
+        $validators = $request->validate([
             'email' => 'required|max:255',
             'password' => 'required|min:6'
         ]);
-            $user = User::where(['email' => $request->email])->first();
-            // return $user;
-            if (!$user || !Hash::check($request->password, $user->password)) {
-               return back()->with('fail',"The Email or Password Incorrect !!");
-            }else{
-                $request->session()->put('user',$user);
-                return redirect('/');
-            }
+        $user = User::where(['email' => $request->email])->first();
+        // return $user;
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return back()->with('fail', "The Email or Password Incorrect !!");
+        } else {
+            $request->session()->put('user', $user);
+            return redirect('/');
+        }
     }
 
 
@@ -108,21 +107,21 @@ class UserController extends Controller
     {
 
         // if (Session::has('user') && Session::get('user')['type'] == 'user') {
-            if(Session::has('user'))
-            {
-            Session::forget('user');
-            return redirect('login');
+        if (Session::has('user')) {
+            if (Session::get('user')['type'] === 'user') {
+                Session::forget('user');
+                return redirect('login');
             }
-        // } else if (Session::has('user') && Session::get('user')['type'] == 'admin') {
-
-        //     Session::forget('user');
-        //     return redirect('adminlogin');
-        // } else if (Session::has('user') && Session::get('user')['type'] == 'superadmin') {
-
-        //     Session::forget('user');
-        //     return redirect('/superadminlogin');
-        // } else {
-        //     return redirect('/');
-        // }
+            if (Session::get('user')['type'] === 'admin') {
+                Session::forget('user');
+                return redirect('adminLogin');
+            }
+            if (Session::get('user')['type'] === 'superadmin') {
+                Session::forget('user');
+                return redirect('superadminLogin');
+            } else {
+                return redirect('login');
+            }
+        }
     }
 }
