@@ -5,7 +5,7 @@ About
 @section('section')
 <div class="page-header text-center scrap-container">
     <hr size="8">
-    <div class="imgdimres"><img src="http://www.interestingreality.com/wp-content/uploads/2020/01/Insurance-broking.jpg" alt="About mBrockerage" class="page-header imgdimres" style="max-height:500px; min-width:200px; max-width:500px">
+    <div class="imgdimres"><img src="http://www.interestingreality.com/wp-content/uploads/2020/01/Insurance-broking.jpg" alt="About mBrockerage" class="img-fluid" >
     </div>
     <div style="margin-left:30px; margin-right:30px; text-align:justify; text-justify:inter-word" >
       <p class="aboutPara"> <strong>mBrockage</strong>  is an insurance broker software for insurance brokers enabling in the design of customised and personalised software solutions for customers and insurance management.
@@ -68,16 +68,17 @@ About
     </center>
   </div>
 </div>
-<div class="container clearfix"  >
+<div class="container clearfix">
     {{-- <br><br> --}}
     <table class="table" >
 
         <tbody>
             <tr>
-                <td><div class="mvv_item">
+                <td>
+                <div class="mvv_item">
                   <h3 class="mvv_head aboutHead">Our Mission</h3>
                   <div class="mvv_img">
-                     <img src="https://static.pbcdn.in/cdn/images/career/mission.png" alt=""  style="max-height: 200px; max-width:150px; min-width:120px min-height:150px">
+                     <img src="https://static.pbcdn.in/cdn/images/career/mission.png" style="width: 200px; height:200px;" alt="" class="img-fluid" >
                   </div>
                   <p class="aboutPara">Building a safety net for households in India.</p>
                </div>
@@ -85,14 +86,14 @@ About
                 <td> <div class="mvv_item">
                   <h3  class="mvv_head aboutHead">Our Values</h3>
                   <div class="mvv_img">
-                     <img src="https://static.pbcdn.in/cdn/images/career/values.png" alt=""  style="max-height: 200px; max-width:150px; min-width:120px min-height:150px">
+                     <img src="https://static.pbcdn.in/cdn/images/career/values.png" style="width: 200px; height:200px;" alt=""  class="img-fluid">
                   </div>
                   <p class="aboutPara">Fairness to all our stakeholders</p>
                </div></td>
                <td><div class="mvv_item">
                   <h3 class="mvv_head aboutHead">Our Vision</h3>
                   <div class="mvv_img">
-                     <img src="https://static.pbcdn.in/cdn/images/career/vision.png" alt=""  style="max-height: 200px; max-width:150px; min-width:120px min-height:150px">
+                     <img src="https://static.pbcdn.in/cdn/images/career/vision.png" alt="" style="width: 200px; height:200px;"  class="img-fluid" >
                   </div>
                   <p class="aboutPara">A healthy and well-protected India</p>
                </div></td>

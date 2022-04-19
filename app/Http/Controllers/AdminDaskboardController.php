@@ -26,7 +26,7 @@ class AdminDaskboardController extends Controller
     public function _addCompany()
     {
         if (Session::has('user') && ((Session::get('user')['type'] == 'superadmin') || (Session::get('user')['type'] == 'admin'))) {
-            return view('Admin.company');
+            return view('Admin.companies');
         } else {
             return redirect('adminLogin');
         }

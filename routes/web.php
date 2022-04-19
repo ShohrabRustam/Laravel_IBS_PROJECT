@@ -55,3 +55,24 @@ Route::post('/adminSignup',[AdminController::class,'_signup'])->name('adminSignu
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::fallback(function () {
+    return view('error');
+});
