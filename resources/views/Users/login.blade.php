@@ -46,6 +46,8 @@
                                 </div>
                                 <br>
                                 <button class="btn btn-secondary btn-lg float-right" type="submit">Login</button>
+                                <br>
+                                <a href="{{url('/signup')}}">New User Register Here</a>
                             </fieldset>
                         </form>
                     </div>

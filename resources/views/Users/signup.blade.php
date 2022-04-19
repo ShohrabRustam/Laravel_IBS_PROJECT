@@ -81,6 +81,8 @@
                                 </div>
                                 <br>
                                 <button class="btn btn-secondary btn-lg float-right" type="submit">Signup</button>
+                                <br>
+                                <a href="{{url('/login')}}">Already Register !!, Login Here</a>
                             </fieldset>
                         </form>
                     </div>
