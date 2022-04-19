@@ -20,7 +20,7 @@ Admin Login
                             {{ Session::get('fail') }}
                         </div>
                         @endif
-                    <form autocomplete="off" action=" {{ URL::to('/superAdminLogin') }} " method="POST" class="form"
+                    <form autocomplete="off" action=" {{ URL::to('/superadminLogin') }} " method="POST" class="form"
                         role="form">
                         @csrf
                         <fieldset>

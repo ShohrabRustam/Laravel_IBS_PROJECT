@@ -25,7 +25,7 @@ Admin Signup
                         {{ Session::get('fail') }}
                     </div>
                     @endif
-                    <form autocomplete="off" action=" {{ URL::to('/adminSignup') }} " method="POST" class="form"
+                    <form autocomplete="off" action=" {{ URL::to('/adminsignup') }} " method="POST" class="form"
                         role="form">
                         @csrf
                         <fieldset>

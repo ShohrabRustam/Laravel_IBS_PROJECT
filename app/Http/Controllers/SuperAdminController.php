@@ -23,14 +23,14 @@ class SuperAdminController extends Controller
                return back()->with('fail',"The Email or Password Incorrect !!");
             }else{
                 $request->session()->put('user',$user);
-                return redirect('/superAdminHome');
+                return redirect('/superadminHome');
             }
     }
 
     public function _logout()
     {
         Session::forget('user');
-        return redirect('/superAdminLogin');
+        return redirect('/superadminLogin');
     }
 
 }
