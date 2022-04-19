@@ -27,7 +27,7 @@ Route::post('/help',[HelpController::class,'_help'])->name('help');
 Route::get('/signup',[DeskboardCommonController::class,'_signup']);
 Route::post('/signup',[UserController::class,'_signup'])->name('signup');
 Route::get('/login',[DeskboardCommonController::class,'_login']);
-Route::post('/login',[UserController::class,'_login']);
+Route::post('/login',[UserController::class,'_login'])->name('login');
 Route::get('/logout',[UserController::class,'_logout'])->name('logout');
 Route::get('/lifeInsurance',[DeskboardCommonController::class,'_life']);
 Route::get('/healthInsurance',[DeskboardCommonController::class,'_health']);
