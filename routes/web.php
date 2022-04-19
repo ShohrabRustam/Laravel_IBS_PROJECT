@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDaskboardController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DeskboardCommonController;
 use App\Http\Controllers\HelpController;
 use App\Http\Controllers\SuperAdminController;
@@ -41,6 +42,7 @@ Route::get('/adminLogin',[AdminDaskboardController::class,'_login'])->middleware
 Route::get('/requestPage',[AdminDaskboardController::class,'_request']);
 Route::get('/companies',[AdminDaskboardController::class,'_companies']);
 Route::get('/addCompany',[AdminDaskboardController::class,'_addCompany']);
+Route::post('/addCompany',[CompanyController::class,'_register'])->name('addCompany');
 Route::get('/claimPage',[AdminDaskboardController::class,'_claim']);
 
 

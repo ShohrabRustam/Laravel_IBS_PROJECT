@@ -14,6 +14,17 @@
                         <h3 class="mb-0">Company Registration </h3>
                     </div>
                     <div class="card-body">
+                        @if(Session::has('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ Session::get('success') }}
+                        </div>
+                        @endif
+                        @if(Session::has('fail'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ Session::get('fail') }}
+                        </div>
+                        @endif
+
                         <form autocomplete="off" action=" {{ URL::to('/addCompany') }} " method="POST"
                             class="form" role="form">
                             @csrf
@@ -23,7 +34,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                                <label class="mb-0" for="r_no">Register Number</label>
+                                <label class="mb-0" for="r_no">Registration Number</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
                                         <input class="form-control" name="r_no" required="" type="number" min="0" value="{{ old('r_no') }}">
@@ -38,10 +49,10 @@
                                 <label class="mb-0" for="name">Company Name</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control" name="name" required="" type="text" value="{{ old('name') }}">
+                                        <input class="form-control" name="name" required="" type="text" value="{{ old('name') }}" required>
                                     </div>
                                 </div>
-                                @error('link')
+                                @error('logo')
                                     <div class="alert alert-danger" role="alert">
                                         {{ $message }}
                                     </div>
@@ -50,7 +61,7 @@
                                 <label class="mb-0" for="link">Link for Logo Optional</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <textarea class="form-control" name="link" type="text" value="{{ old('link') }}"></textarea>
+                                        <textarea class="form-control" name="logo" type="text" value="{{ old('logo') }}"></textarea>
                                     </div>
                                 </div>
 

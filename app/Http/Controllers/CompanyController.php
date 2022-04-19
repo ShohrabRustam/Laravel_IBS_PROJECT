@@ -10,26 +10,24 @@ class CompanyController extends Controller
 {
     public function _register(Request $request)
     {
-        $validators = Validator::make($request->all(), [
+        $validators = $request->validate([
             'r_no' => 'required|unique:companies|numeric',
-            'name' => 'required|min:6',
-            'about' => 'required|min:10'
+            'name' => 'required|min:3',
+            'about' => 'required|min:6'
         ]);
-        if ($validators->passes()) {
-            $company = new Company();
-            $company->r_no = $request->r_no;
-            $company->name = $request->name;
-            $company->about = $request->about;
-            if($request->logo){
+        $company = new Company();
+        $company->r_no = $request->r_no;
+        $company->name = $request->name;
+        $company->about = $request->about;
+        if ($request->logo) {
             $company->logo = $request->logo;
-            }
-            $company->save();
-            // return "Done";
-            $response = response()->json(['status' => 'true', 'message' => ' Congratulations! Company Resgister Successfully !!', 'code' => 201]);
-        } else {
-            $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
         }
-        return $response;
+        $response = $company->save();
+        if ($response) {
+            return back()->with('success', 'You have Registered Successfully !!!');
+        } else {
+            return back()->with('fail', 'Ohooo .. Something Wrong !!');
+        }
     }
 
     public function _companies()
@@ -82,6 +80,4 @@ class CompanyController extends Controller
         }
         return $response;
     }
-
-
 }
