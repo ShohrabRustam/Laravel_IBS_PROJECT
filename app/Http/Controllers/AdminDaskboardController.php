@@ -85,7 +85,7 @@ class AdminDaskboardController extends Controller
         if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
             return view('SuperAdmin.signupAdmin');
         } else {
-            return redirect('/superAdminLogin');
+            return redirect('/superadminLogin');
         }
     }
 }

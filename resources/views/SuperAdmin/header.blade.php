@@ -8,7 +8,7 @@
         <span class="bar"></span>
     </div>
     <ul class="nav no-search">
-        @if (Session::has('user'))
+        @if (Session::has('user') && Session::get('user')['type']=='superadmin')
             <li class="nav-item"><a href="{{ url('/superadminHome') }}" style="margin-left:10px ">Home</a></li>
             <li class="nav-item"><a href="{{ url('/usersList') }}" style="margin-left:10px ">Users</a></li>
             <li class="nav-item"><a href="{{ url('/adminsList') }}" style="margin-left:10px ">Admins</a></li>
