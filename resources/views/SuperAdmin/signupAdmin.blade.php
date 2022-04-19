@@ -32,20 +32,20 @@ Admin Signup
                             <label class="mb-0" for="name2">Name</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input class="form-control" id="name2" name="name" required="" type="text">
+                                    <input class="form-control" id="name2" name="name" required="" type="text" value="{{ old('name') }}">
                                 </div>
                             </div>
                             <label class="mb-0" for="email2">Email</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input class="form-control" id="email2" name="email" required="" type="email">
+                                    <input class="form-control" id="email2" name="email" required="" type="email" value="{{ old('email') }}">
                                 </div>
                             </div>
                             @enderror
                             <label class="mb-0" for="mobile">Mobile</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input class="form-control"  name="mobile" required="" type="number" min="0">
+                                    <input class="form-control"  name="mobile" required="" type="number" min="0" value="{{ old('mobile') }}">
                                 </div>
                             </div>
 

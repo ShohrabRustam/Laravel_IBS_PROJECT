@@ -28,7 +28,7 @@
                                 <label class="mb-0" for="name2">Name</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control" id="name2" name="name" required="" type="text">
+                                        <input class="form-control" id="name2" name="name" required="" type="text" value="{{ old('name') }}">
                                     </div>
                                 </div>
                                 @error('email')
@@ -40,7 +40,7 @@
                                 <label class="mb-0" for="email2">Email</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control" name="email" required="" type="email">
+                                        <input class="form-control" name="email" required="" type="email" value="{{ old('email') }}">
                                     </div>
                                 </div>
                                 @error('message')
@@ -51,7 +51,7 @@
                                 <label class="mb-0" for="message2">Message</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <textarea class="form-control" name="message" required="" rows="6"></textarea>
+                                        <textarea class="form-control" name="message" required="" rows="6" value="{{ old('message') }}"></textarea>
                                     </div>
                                 </div>
                                 <button class="btn btn-secondary btn-lg float-right" type="submit">Send Message</button>

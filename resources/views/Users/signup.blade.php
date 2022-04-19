@@ -37,7 +37,7 @@
                                 <label class="mb-0" for="name">Name</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control" name="name" required="" type="text">
+                                        <input class="form-control" name="name" required="" type="text" value="{{ old('name') }}">
                                     </div>
                                 </div>
                                 @error('email')
@@ -48,7 +48,7 @@
                                 <label class="mb-0" for="email">Email</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control"  name="email" required="" type="email">
+                                        <input class="form-control"  name="email" required="" type="email" value="{{ old('email') }}">
                                     </div>
                                 </div>
 
@@ -60,7 +60,7 @@
                                 <label class="mb-0" for="mobile">Mobile</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control"  name="mobile" required="" type="number" min="0">
+                                        <input class="form-control"  name="mobile" required="" type="number" min="0" value="{{ old('mobile') }}">
                                     </div>
                                 </div>
 

@@ -26,7 +26,7 @@
                                 <label class="mb-0" for="r_no">Register Number</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control" name="r_no" required="" type="number" min="0">
+                                        <input class="form-control" name="r_no" required="" type="number" min="0" value="{{ old('r_no') }}">
                                     </div>
                                 </div>
 
@@ -38,7 +38,7 @@
                                 <label class="mb-0" for="name">Company Name</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control" name="name" required="" type="text">
+                                        <input class="form-control" name="name" required="" type="text" value="{{ old('name') }}">
                                     </div>
                                 </div>
                                 @error('link')
@@ -50,7 +50,7 @@
                                 <label class="mb-0" for="link">Link for Logo Optional</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <textarea class="form-control" name="link" type="text"></textarea>
+                                        <textarea class="form-control" name="link" type="text" value="{{ old('link') }}"></textarea>
                                     </div>
                                 </div>
 
@@ -63,7 +63,7 @@
                                 <label class="mb-0" for="about">About</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <textarea class="form-control" name="about" required="" type="text"></textarea>
+                                        <textarea class="form-control" name="about" required="" type="text" value="{{ old('about') }}"></textarea>
                                     </div>
                                 </div>
 

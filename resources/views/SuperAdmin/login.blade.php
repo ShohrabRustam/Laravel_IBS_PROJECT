@@ -46,7 +46,7 @@ Admin Login
                                 </div>
                             </div>
                             <br>
-                            <button class="btn btn-secondary btn-lg float-right" type="submit">Login</button>
+                            <button class="btn btn-secondary btn-lg float-right" type="submit" value="{{ old('email') }}">Login</button>
                         </fieldset>
                     </form>
                 </div>
