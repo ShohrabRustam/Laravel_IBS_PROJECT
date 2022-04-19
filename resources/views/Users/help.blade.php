@@ -15,25 +15,43 @@
                         <h3 class="mb-0">Send Us Message For Any Help</h3>
                     </div>
                     <div class="card-body">
-                        <form autocomplete="off" action=" {{ URL::to('/help') }} "  method="POST" class="form" role="form">
+                        <form autocomplete="off" action=" {{ URL::to('/help') }} " method="POST" class="form"
+                            role="form">
                             @csrf
                             <fieldset>
+                                @error('name')
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
                                 <label class="mb-0" for="name2">Name</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
                                         <input class="form-control" id="name2" name="name" required="" type="text">
                                     </div>
                                 </div>
+                                @error('email')
+                                <div class="alert alert-danger" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
                                 <label class="mb-0" for="email2">Email</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control" id="email2" name="email" required="" type="email">
+                                        <input class="form-control" name="email" required="" type="email">
                                     </div>
                                 </div>
+                                @error('message')
+                                <div class="alert alert-danger" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                                 <label class="mb-0" for="message2">Message</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <textarea class="form-control" id="message2" name="message" required="" rows="6"></textarea>
+                                        <textarea class="form-control" name="message" required="" rows="6"></textarea>
                                     </div>
                                 </div>
                                 <button class="btn btn-secondary btn-lg float-right" type="submit">Send Message</button>
