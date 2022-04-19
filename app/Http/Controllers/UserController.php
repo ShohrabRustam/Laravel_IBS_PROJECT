@@ -24,8 +24,13 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->mobile = $request->mobile;
             $user->password = Hash::make($request->password);
-            $user->save();
-            return redirect('/');
+            $response = $user->save();
+            if($response){
+                return back()->with('success','You have Registered Successfully !!!');
+            }
+            else{
+                return back()->with('fail','Ohooo .. Something Wrong !!');
+            }
 
           }
 
