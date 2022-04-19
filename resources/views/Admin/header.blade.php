@@ -8,10 +8,13 @@
         <span class="bar"></span>
     </div>
     <ul class="nav no-search">
+        @if(!Session::has('user'))
+        <li class="nav-item"><a href="{{ url('/adminLogin') }}">Login</a></li>
+        @else
         <li class="nav-item"><a href="{{ url('/adminHome') }}">Home</a></li>
         <li class="nav-item"><a href="{{ url('/requestPage') }}">Request</a></li>
         <li class="nav-item"><a href="{{ url('/claimPage') }}">Claim</a></li>
         <li class="nav-item"><a href="{{ url('/addCompany') }}">Add Company</a></li>
-        <li class="nav-item" style="margin-left:30px "><a href="{{ url('/adminLogin') }}">Login</a></li>
+        @endif
     </ul>
 </nav>
