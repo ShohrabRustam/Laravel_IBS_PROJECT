@@ -46,3 +46,6 @@ Route::get('/admins',[AdminDaskboardController::class,'_admins']);
 Route::get('/superAdminLogin',[AdminDaskboardController::class,'_loginSuperadmin']);
 Route::get('/adminSignup',[AdminDaskboardController::class,'_signupAdmin']);
 
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
