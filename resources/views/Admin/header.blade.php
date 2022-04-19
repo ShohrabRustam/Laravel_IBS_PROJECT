@@ -12,7 +12,7 @@
         <li class="nav-item"><a href="{{URL::to('/adminHome') }}">Home</a></li>
         <li class="nav-item"><a href="{{ URL::to('/requestPage') }}">Request</a></li>
         <li class="nav-item"><a href="{{ URL::to('/claimPage') }}">Claim</a></li>
-        <li class="nav-item" style="margin-right:15px; "><a href="{{ URL::to('/addCompany') }}">Company</a></li>
+        <li class="nav-item" style="margin-right:15px; "><a href="{{ URL::to('/companies') }}">Companies</a></li>
         <li class="nav-item"><a href="{{ URL::to('/adminLogout') }}">Logout</a></li>
         @else
         <li class="nav-item"><a href="{{URL::to('/adminLogin') }}">Login</a></li>
