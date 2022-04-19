@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -111,6 +111,8 @@ class AdminController extends Controller
     public function _logout()
     {
 
+        Session::forget('user');
+        return redirect('/adminHome');
         // if (Session::has('user') && Session::get('user')['type'] == 'superadmin') {
 
         //     Session::forget('user');

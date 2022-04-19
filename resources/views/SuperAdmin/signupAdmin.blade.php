@@ -29,19 +29,33 @@ Admin Signup
                         role="form">
                         @csrf
                         <fieldset>
-                            <label class="mb-0" for="name2">Name</label>
+                            @error('name')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                            <label class="mb-0" for="name">Name</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input class="form-control" id="name2" name="name" required="" type="text" value="{{ old('name') }}">
+                                    <input class="form-control"  name="name" required="" type="text" value="{{ old('name') }}">
                                 </div>
                             </div>
-                            <label class="mb-0" for="email2">Email</label>
+                            @error('email')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                            <label class="mb-0" for="email">Email</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
                                     <input class="form-control" id="email2" name="email" required="" type="email" value="{{ old('email') }}">
                                 </div>
                             </div>
-                            @enderror
+                            @error('mobile')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
                             <label class="mb-0" for="mobile">Mobile</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
@@ -49,6 +63,11 @@ Admin Signup
                                 </div>
                             </div>
 
+                            @error('password')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
 
                             <label class="mb-0" for="password2">Password</label>
                             <div class="row mb-1">
@@ -58,6 +77,11 @@ Admin Signup
                                 </div>
                             </div>
 
+                            @error('comfirm_password')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
                             <label class="mb-0" for="confirm_password">Confirm Password</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">

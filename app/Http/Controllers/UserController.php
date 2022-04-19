@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
-use Session;
-
 
 class UserController extends Controller
 {
@@ -42,10 +41,11 @@ class UserController extends Controller
             'password' => 'required|min:6'
         ]);
             $user = User::where(['email' => $request->email])->first();
+            // return $user;
             if (!$user || !Hash::check($request->password, $user->password)) {
                return back()->with('fail',"The Email or Password Incorrect !!");
             }else{
-                $request->session()->put('userId','$userId');
+                $request->session()->put('user',$user);
                 return redirect('/');
             }
     }
@@ -106,10 +106,13 @@ class UserController extends Controller
 
     public function _logout()
     {
-        // if (Session::has('user') && Session::get('user')['type'] == 'user') {
 
-        //     Session::forget('user');
-        //     return redirect('login');
+        // if (Session::has('user') && Session::get('user')['type'] == 'user') {
+            if(Session::has('user'))
+            {
+            Session::forget('user');
+            return redirect('login');
+            }
         // } else if (Session::has('user') && Session::get('user')['type'] == 'admin') {
 
         //     Session::forget('user');

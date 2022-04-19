@@ -12,8 +12,13 @@
         <li class="nav-item"><a href="{{ url('/about') }}">About</a></li>
         <li class="nav-item"><a href="{{ url('/contact') }}">Contact</a></li>
         <li class="nav-item"><a href="{{ url('/help') }}" style="margin-left: 10px">Help</a></li>
+        @if(!Session::has('user'))
         <li class="nav-item"><a href="{{ url('/login') }}">Login</a></li>
         <li class="nav-item"><a href="{{ url('/signup') }}">Signup</a></li>
+        @else
+        <li class="nav-item"><a href="{{ url('/logout') }}">Logout</a></li>
+        @endIf
+
         {{-- <li class="nav-item"><a href="{{ url('/contact') }}">Contact Us</a></li> --}}
         {{-- <i class="fas fa-search" id="search-icon"></i>
         <input class="search-input" type="text" placeholder="Search.."> --}}
