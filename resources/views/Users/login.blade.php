@@ -15,6 +15,11 @@
                         <h3 class="mb-0">Login Here </h3>
                     </div>
                     <div class="card-body">
+                        @if(Session::has('fail'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ Session::get('fail') }}
+                        </div>
+                        @endif
                         <form autocomplete="off" action=" {{ URL::to('/login') }} " method="POST" class="form"
                             role="form">
                             @csrf

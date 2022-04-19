@@ -41,23 +41,16 @@ class AdminController extends Controller
 
     public function  _login(Request $request)
     {
-
-        $validators = Validator::make($request->all(), [
+        $validators =$request->validate( [
             'email' => 'required|max:255',
             'password' => 'required|min:6'
         ]);
-        if ($validators->passes()) {
-            $admin = Admin::where(['email' => $request->email])->first();
-            if (!$admin || !Hash::check($request->password, $admin->password)) {
-                $response = response()->json(['status' => 'false', 'message' => ' Email or Password Incorrect !! ', 'code' => 409]);
-            } else {
-                $response = response()->json(['status' => 'true', 'message' => ' Login Successfully  !!', 'code' => 201]);
+            $user = Admin::where(['email' => $request->email])->first();
+            if (!$user || !Hash::check($request->password, $user->password)) {
+               return back()->with('fail',"The Email or Password Incorrect !!");
             }
-        } else {
-            $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'code' => 201]);
-        }
+            return redirect('/adminHome');
 
-        return $response;
     }
 
     public function _delete(Request $request)

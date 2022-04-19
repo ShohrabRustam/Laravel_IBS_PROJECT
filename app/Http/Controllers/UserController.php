@@ -43,8 +43,7 @@ class UserController extends Controller
         ]);
             $user = User::where(['email' => $request->email])->first();
             if (!$user || !Hash::check($request->password, $user->password)) {
-                $message="Email or Password Incorrect !!";
-               return back()->with('message',$message);
+               return back()->with('fail',"The Email or Password Incorrect !!");
             }
         return redirect('/');
     }
