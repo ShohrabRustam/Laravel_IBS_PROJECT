@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Session;
+
 
 class UserController extends Controller
 {
@@ -44,8 +44,10 @@ class UserController extends Controller
             $user = User::where(['email' => $request->email])->first();
             if (!$user || !Hash::check($request->password, $user->password)) {
                return back()->with('fail',"The Email or Password Incorrect !!");
+            }else{
+                $request->session()->put('userId','$userId');
+                return redirect('/');
             }
-        return redirect('/');
     }
 
 
