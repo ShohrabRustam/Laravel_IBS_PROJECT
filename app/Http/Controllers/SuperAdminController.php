@@ -11,11 +11,8 @@ use Illuminate\Support\Facades\Session;
 
 class SuperAdminController extends Controller
 {
-    //
-
     public function _login(Request $request)
     {
-
             $validators =$request->validate( [
             'email' => 'required|max:255',
             'password' => 'required|min:6'
@@ -28,23 +25,12 @@ class SuperAdminController extends Controller
                 $request->session()->put('user',$user);
                 return redirect('/superAdminHome');
             }
-
-        // $user = SuperAdmin::where(['gmail' => $req->gmail])->first();
-        // if (!$user || ($req->password != $user->password)) {
-        //     // return 'hello';
-        //     return back()->with("fail", "Email or Password is not Match");
-        // } else {
-        //     $req->session()->put('user', $user);
-        //     return redirect('superadminhome');
-        // }
     }
 
     public function _logout()
     {
-
         Session::forget('user');
         return redirect('/superAdminLogin');
     }
-
 
 }
