@@ -19,17 +19,29 @@ Admin Login
                         role="form">
                         @csrf
                         <fieldset>
+                            @error('email')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
                             <label class="mb-0" for="email2">Email</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input class="form-control" id="email2" name="email" required="" type="email">
+                                    <input class="form-control"  name="email" required="" type="email">
                                 </div>
                             </div>
 
-                            <label class="mb-0" for="password2">Password</label>
+                            @error('password')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
+                            <label class="mb-0" for="password">Password</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input class="form-control" id="password2" name="password" required=""
+                                    <input class="form-control"  name="password" required=""
                                         type="password">
                                 </div>
                             </div>

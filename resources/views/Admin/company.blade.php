@@ -18,6 +18,11 @@
                             class="form" role="form">
                             @csrf
                             <fieldset>
+                                @error('r_no')
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                                 <label class="mb-0" for="r_no">Register Number</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
@@ -25,18 +30,35 @@
                                     </div>
                                 </div>
 
+                                @error('name')
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                                 <label class="mb-0" for="name">Company Name</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
                                         <input class="form-control" name="name" required="" type="text">
                                     </div>
                                 </div>
+                                @error('link')
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
                                 <label class="mb-0" for="link">Link for Logo Optional</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <textarea class="form-control" name="link" required="" type="text"></textarea>
+                                        <textarea class="form-control" name="link" type="text"></textarea>
                                     </div>
                                 </div>
+
+                                @error('about')
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
 
                                 <label class="mb-0" for="about">About</label>
                                 <div class="row mb-1">
