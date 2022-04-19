@@ -36,15 +36,15 @@ Route::get('/carInsurance',[DeskboardCommonController::class,'_car']);
 Route::get('/bikeInsurance',[DeskboardCommonController::class,'_bike']);
 
 
-
 Route::get('/adminHome',[AdminDaskboardController::class,'_index']);
 Route::get('/adminLogin',[AdminDaskboardController::class,'_login'])->middleware('adminLogin');
+Route::post('/adminLogin',[AdminController::class,'_login'])->middleware('adminLogin');
 Route::get('/requestPage',[AdminDaskboardController::class,'_request']);
 Route::get('/companies',[AdminDaskboardController::class,'_companies']);
 Route::get('/addCompany',[AdminDaskboardController::class,'_addCompany']);
 Route::post('/addCompany',[CompanyController::class,'_register'])->name('addCompany');
+Route::get('/adminLogout',[AdminController::class,'_logout']);
 Route::get('/claimPage',[AdminDaskboardController::class,'_claim']);
-
 
 Route::get('/superadminHome',[AdminDaskboardController::class,'_homeSuperadmin']);
 Route::get('/usersList',[AdminDaskboardController::class,'_users']);

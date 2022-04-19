@@ -63,21 +63,18 @@ class CompanyController extends Controller
 
     public function _update(Request $request)
     {
-        $validators = Validator::make($request->all(), [
+        $validators = $request->validate( [
             'r_no' => 'required|unique:companies',
             'name' => 'required|regex:/^[a-zA-Z\s]+$/',
             'about' => 'required'
         ]);
-        if ($validators->passes()) {
             $company = Company::find($request->id);
             $company->r_no = $request->r_no;
             $company->name = $request->name;
             $company->logo = $request->logo;
-            $company->save();
-            $response = response()->json(['status' => 'true', 'message' => ' Company details updated Successfully', 'code' => 201]);
-        } else {
-            $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
-        }
-        return $response;
+          $response=  $company->save();
+          if($response){
+            return "Done";
+          }
     }
 }

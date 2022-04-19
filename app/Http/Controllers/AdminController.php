@@ -30,24 +30,19 @@ class AdminController extends Controller
         } else {
             return back()->with('fail', 'Ohooo .. Something Wrong !!');
         }
-        // if (Session::has('user') && Session::get('user')['type'] == 'superadmin') {
-
-        //     return redirect('adminlogin');
-        // } else {
-        //     return redirect('superadminlogin');
-        // }
     }
 
     public function  _login(Request $request)
     {
         $validators = $request->validate([
-            'email' => 'required|max:255',
+            'email' => 'required|max:255|exists:admins',
             'password' => 'required|min:6'
         ]);
-        $user = Admin::where(['email' => $request->email])->first();
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        $admin = Admin::where(['email' => $request->email])->first();
+        if (!$admin || !Hash::check($request->password, $admin->password)) {
             return back()->with('fail', "The Email or Password Incorrect !!");
         }
+        $request->session()->put('user', $admin);
         return redirect('/adminHome');
     }
 
@@ -99,10 +94,6 @@ class AdminController extends Controller
     {
 
         if (Session::has('user')) {
-            if (Session::get('user')['type'] === 'user') {
-                Session::forget('user');
-                return redirect('login');
-            }
             if (Session::get('user')['type'] === 'admin') {
                 Session::forget('user');
                 return redirect('adminLogin');
@@ -112,7 +103,7 @@ class AdminController extends Controller
                 return redirect('superadminLogin');
             }
         } else {
-            return redirect('login');
+            return redirect('/adminLogin');
         }
     }
 }
