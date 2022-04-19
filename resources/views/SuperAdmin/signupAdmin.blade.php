@@ -31,6 +31,14 @@ Admin Signup
                                     <input class="form-control" id="email2" name="email" required="" type="email">
                                 </div>
                             </div>
+                            @enderror
+                            <label class="mb-0" for="mobile">Mobile</label>
+                            <div class="row mb-1">
+                                <div class="col-lg-12">
+                                    <input class="form-control"  name="mobile" required="" type="number" min="0">
+                                </div>
+                            </div>
+
 
                             <label class="mb-0" for="password2">Password</label>
                             <div class="row mb-1">

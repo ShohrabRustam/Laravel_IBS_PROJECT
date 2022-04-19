@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminDaskboardController;
 use App\Http\Controllers\DeskboardCommonController;
 use App\Http\Controllers\HelpController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,11 +23,14 @@ Route::get('/about',[DeskboardCommonController::class,'_about']);
 Route::get('/help',[DeskboardCommonController::class,'_help']);
 Route::post('/help',[HelpController::class,'_help']);
 Route::get('/signup',[DeskboardCommonController::class,'_signup']);
+Route::post('/signup',[UserController::class,'_signup']);
 Route::get('/login',[DeskboardCommonController::class,'_login']);
+Route::post('/login',[UserController::class,'_login']);
 Route::get('/lifeInsurance',[DeskboardCommonController::class,'_life']);
 Route::get('/healthInsurance',[DeskboardCommonController::class,'_health']);
 Route::get('/carInsurance',[DeskboardCommonController::class,'_car']);
 Route::get('/bikeInsurance',[DeskboardCommonController::class,'_bike']);
+
 
 
 Route::get('/adminHome',[AdminDaskboardController::class,'_index']);

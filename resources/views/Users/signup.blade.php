@@ -42,6 +42,18 @@
                                     </div>
                                 </div>
 
+                                @error('mobile')
+                                <div class="alert alert-danger" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                                <label class="mb-0" for="mobile">Mobile</label>
+                                <div class="row mb-1">
+                                    <div class="col-lg-12">
+                                        <input class="form-control"  name="mobile" required="" type="number" min="0">
+                                    </div>
+                                </div>
+
                                 @error('password')
                                 <div class="alert alert-danger" role="alert">
                                     {{ $message }}
