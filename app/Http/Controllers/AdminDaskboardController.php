@@ -42,8 +42,6 @@ class AdminDaskboardController extends Controller
     }
 
 
-
-
     public function _request()
     {
         if (Session::has('user') && ((Session::get('user')['type'] == 'superadmin') || (Session::get('user')['type'] == 'admin'))) {
@@ -52,7 +50,6 @@ class AdminDaskboardController extends Controller
             return redirect('adminLogin');
         }
     }
-
 
     public function _claim()
     {

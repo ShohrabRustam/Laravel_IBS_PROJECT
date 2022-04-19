@@ -13,11 +13,11 @@ class AdminController extends Controller
     public function _signup(Request $request)
     {
         $validators = $request->validate([
-            'name' => 'required|regex:/^[a-zA-Z\s]+$/',
-            'email' => 'required|max:255|unique:admins',
-            'mobile' => 'required|min:6000000000|max:9999999999|numeric|unique:admins',
-            'password' => 'required|min:6',
-            'confirm_password' => 'required_with:password|same:password|min:6'
+        'name' => 'required|regex:/^[a-zA-Z\s]+$/',
+        'email' => 'required|max:255|unique:users',
+        'mobile' => 'required|min:6000000000|max:9999999999|numeric|unique:users',
+        'password' => 'required|min:6',
+        'confirm_password' => 'required_with:password|same:password|min:6'
         ]);
         $user = new Admin();
         $user->name = $request->name;
@@ -26,7 +26,7 @@ class AdminController extends Controller
         $user->password = Hash::make($request->password);
         $response = $user->save();
         if ($response) {
-            return back()->with('success', 'You have Registered Successfully !!!');
+            return back()->with('success', 'Admin Registered Successfully !!!');
         } else {
             return back()->with('fail', 'Ohooo .. Something Wrong !!');
         }

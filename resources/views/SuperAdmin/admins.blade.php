@@ -4,5 +4,6 @@ Admins List
 @endsection
 
 @section('section')
-<h1 class="custom">Admin List</h1>
-@endsection
+<div style="color: black" class="float-left" >
+    <a href="{{ URL::to('/adminSignup') }}" class="float-left"><i class="fas fa fa-plus fa-x"></i>Add Admin</a>
+    </div>@endsection

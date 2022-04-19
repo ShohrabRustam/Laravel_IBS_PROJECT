@@ -55,8 +55,6 @@ Route::get('/superadminLogout',[SuperAdminController::class,'_logout']);
 Route::get('/adminSignup',[AdminDaskboardController::class,'_signupAdmin'])->middleware('adminLogin');
 Route::post('/adminSignup',[AdminController::class,'_signup'])->name('adminSignup');
 
-
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
