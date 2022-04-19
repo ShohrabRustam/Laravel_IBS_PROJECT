@@ -1,7 +1,9 @@
 @extends('Admin.master')
 @section('title')
-    Add Company
+    Companies
 @endsection
 @section('section')
-<h1 class="custom">All Companies</h1>
+<div style="color: black" class="float-left" >
+<a href="{{ URL::to('/') }}" class="float-left"><i class="fas fa fa-plus fa-x"></i>Add Company</a>
+</div>
 @endsection
