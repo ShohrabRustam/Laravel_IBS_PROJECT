@@ -15,7 +15,17 @@ Admin Signup
                     <h3 class="mb-0">Admin SignUp</h3>
                 </div>
                 <div class="card-body">
-                    <form autocomplete="off" action=" {{ URL::to('/signup') }} " method="POST" class="form"
+                    @if(Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('success') }}
+                    </div>
+                    @endif
+                    @if(Session::has('fail'))
+                    <div class="alert alert-alert" role="alert">
+                        {{ Session::get('fail') }}
+                    </div>
+                    @endif
+                    <form autocomplete="off" action=" {{ URL::to('/adminSignup') }} " method="POST" class="form"
                         role="form">
                         @csrf
                         <fieldset>

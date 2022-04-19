@@ -12,26 +12,25 @@ class AdminController extends Controller
 {
     public function _signup(Request $request)
     {
-        $validators = Validator::make($request->all(), [
+        $validators = $request->validate([
             'name' => 'required|regex:/^[a-zA-Z\s]+$/',
             'email' => 'required|max:255|unique:admins',
             'mobile' => 'required|min:6000000000|max:9999999999|numeric|unique:admins',
             'password' => 'required|min:6',
             'confirm_password' => 'required_with:password|same:password|min:6'
         ]);
-        if ($validators->passes()) {
             $user = new Admin();
             $user->name = $request->name;
             $user->email = $request->email;
             $user->mobile = $request->mobile;
             $user->password = Hash::make($request->password);
-            $user->save();
-            $response = response()->json(['status' => 'true', 'message' => ' Congratulations! Your account has been Created Successfully !!', 'code' => 201]);
-        } else {
-            $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
-        }
-        return $response;
-
+            $response=$user->save();
+            if($response){
+                return back()->with('success','You have Registered Successfully !!!');
+            }
+            else{
+                return back()->with('fail','Ohooo .. Something Wrong !!');
+            }
         // if (Session::has('user') && Session::get('user')['type'] == 'superadmin') {
 
         //     return redirect('adminlogin');
