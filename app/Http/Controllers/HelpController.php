@@ -22,7 +22,7 @@ class HelpController extends Controller
         $help->message = $request->message;
        $response= $help->save();
        if($response){
-            return back()->with('success','Your Message send us Successfully !!');
+            return back()->with('success','Your Message send us Successfully !! We will give you response soon!!');
        }
         return back()->with('fail',"Ohoo, Something wrong ");
     }
