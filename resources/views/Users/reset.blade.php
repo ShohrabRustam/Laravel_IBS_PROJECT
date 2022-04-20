@@ -12,7 +12,7 @@
                 <!-- form contact -->
                 <div class="card card-outline-secondary">
                     <div class="card-header">
-                        <h3 class="mb-0">Login Here </h3>
+                        <h3 class="mb-0">Set Your Password </h3>
                     </div>
                     <div class="card-body">
                         @if (Session::has('success'))
