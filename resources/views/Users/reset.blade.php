@@ -1,6 +1,6 @@
 @extends('Layout.master')
 @section('title')
-    Reset Password
+    Set Password
 @endsection
 @section('section')
     <div class="container py-3">
