@@ -1,6 +1,6 @@
 @extends('Layout.master')
 @section('title')
-    Login
+    Reset Password
 @endsection
 @section('section')
     <div class="container py-3">
@@ -15,51 +15,57 @@
                         <h3 class="mb-0">Login Here </h3>
                     </div>
                     <div class="card-body">
-                        @if(Session::has('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ Session::get('suceess') }}
-                        </div>
+                        @if (Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ Session::get('success') }}
+                            </div>
                         @endif
-                        @if(Session::has('fail'))
-                        <div class="alert alert-danger" role="alert">
-                            {{ Session::get('fail') }}
-                        </div>
+                        @if (Session::has('fail'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ Session::get('fail') }}
+                            </div>
                         @endif
-                        <form autocomplete="off" action=" {{ URL::to('/login') }} " method="POST" class="form"
-                            role="form">
+                        <form autocomplete="off" action=" {{ URL::to('/resetpassword') }} " method="POST"
+                            class="form" role="form">
                             @csrf
                             <fieldset>
-                                @error('email')
-                                <div class="alert alert-danger" role="alert">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-
+                                <input type="hidden" name='token' value="{{ $token ?? old('token')}}" readonly >
                                 <label class="mb-0" for="email">Email</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control" name="email" required="" type="email" value="{{ old('email') }}">
+                                        <input class="form-control" name="email" required="" type="email"
+                                            value="{{ $email ?? old('email') }}" readonly>
                                     </div>
                                 </div>
 
                                 @error('password')
-                                <div class="alert alert-danger" role="alert">
-                                    {{ $message }}
-                                </div>
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                                 <label class="mb-0" for="password">Password</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control"  name="password" required=""
-                                            type="password">
+                                        <input class="form-control" name="password" required="" type="password">
+                                    </div>
+                                </div>
+
+                                @error('confirm_password')
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <label class="mb-0" for="password">Confirm Password</label>
+                                <div class="row mb-1">
+                                    <div class="col-lg-12">
+                                        <input class="form-control" name="confirm_password" required="" type="password">
                                     </div>
                                 </div>
                                 <br>
-                                <a href="{{url('/forgetpassword')}}">forget password</a>
                                 <br>
-                                <button class="btn btn-secondary btn-lg float-right" type="submit">Login</button>
+                                <button class="btn btn-secondary btn-lg float-right" type="submit">Reset Password</button>
                                 <br>
-                                <a href="{{url('/signup')}}">New User Register Here</a>
+                                <a href="{{ url('/login') }}">Login</a>
                             </fieldset>
                         </form>
                     </div>
@@ -104,5 +110,6 @@
             background: linear-gradient(90deg, transparent, #03e9f4);
             animation: btn-anim1 1s linear infinite;
         }
+
     </style>
 @endsection

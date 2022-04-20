@@ -63,6 +63,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
+Route::get('/forgetpassword',[UserController::class,'_showForgotPasswordForm']);
+
+Route::post('/forgetpassword',[UserController::class,'_sendResetLink'])->name('forgetPassword');
+
+// Route::get('/resetpassword/{token}',[UserController::class,'_showResetForm']);
+
+Route::get('/resetpassword/{token?}',[UserController::class,'_showResetForm'])->name('resetpassword');
+
+
+Route::post('/resetpassword',[UserController::class,'_resetForm'])->name('resetpassword');
+
 
 
 

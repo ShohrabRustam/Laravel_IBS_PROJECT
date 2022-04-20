@@ -1,6 +1,6 @@
 @extends('Layout.master')
 @section('title')
-    Login
+    Reset Password
 @endsection
 @section('section')
     <div class="container py-3">
@@ -15,11 +15,6 @@
                         <h3 class="mb-0">Login Here </h3>
                     </div>
                     <div class="card-body">
-                        @if(Session::has('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ Session::get('suceess') }}
-                        </div>
-                        @endif
                         @if(Session::has('fail'))
                         <div class="alert alert-danger" role="alert">
                             {{ Session::get('fail') }}
@@ -55,7 +50,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <a href="{{url('/forgetpassword')}}">forget password</a>
+                                <a href="{{url('forgetpassword')}}">forget password</a>
                                 <br>
                                 <button class="btn btn-secondary btn-lg float-right" type="submit">Login</button>
                                 <br>

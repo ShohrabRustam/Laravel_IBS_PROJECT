@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Validator;
+use App\Models\PasswordReset;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -72,6 +77,81 @@ class UserController extends Controller
         // return $response;
     }
 
+    public function _showForgotPasswordForm()
+    {
+        return view('Users.forget');
+    }
+
+
+    public function _sendResetLink(Request $request)
+    {
+        $validators = $request->validate([
+            'email' => 'required|exists:users,email',
+        ]);
+
+        $token = Str::random(64);
+
+        $reset = new PasswordReset();
+        $reset->email = $request->email;
+        $reset->token = $token;
+        $reset->created_at = Carbon::now();
+        $response = $reset->save();
+        // return "done";
+
+        $action_link = route('resetpassword', ['token' => $token, 'email' => $request->email]);
+        $body = "we are received a request to reset password for <b> www.ibs.com </b> associated with $request->email
+        . You can reset your password by clicking the link below ";
+        // return $body;
+
+        Mail::send('email-forgot', ['action_link' => $action_link, 'body' => $body], function ($message) use ($request) {
+            $message->from('mohdrustam002@gmail.com', 'Insurance Broking System');
+            $message->to($request->email, "Insurance Broking System")->subject('Reset Password');
+        });
+        // return "done";
+        if ($response) {
+            return back()->with('success', ' We have send e-mailed Successfully your reset password link  ');
+        } else {
+            return back()->with('fail', ' Some thing wrong  ');
+        }
+    }
+
+    public function _showResetForm(Request $request, $token = null)
+    {
+        // return "hello";
+        return view('Users.reset')->with(['token' => $request->token, 'email' => $request->email]);
+        // return view('Users.reset');
+    }
+
+    public function _resetForm(Request $request)
+    {
+        // return $request->all();
+        $validators = $request->validate([
+            'email' => 'required|max:255|exists:users,email',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required_with:password|same:password|min:6'
+        ]);
+        // return $request->_token;
+        // return "True";
+        $check_token = PasswordReset::where([
+            'email' => $request->email,
+            'token' => $request->token
+        ])->first();
+        // return $check_token;
+
+        if ($check_token) {
+            User::where('email', $request->email)->update([
+                'password' => Hash::make($request->password)
+            ]);
+            PasswordReset::where([
+                'email' => $request->email
+            ])->delete();
+
+            return redirect('/login')->with('suceess', 'Your Password has been changed!!');
+        } else {
+            return back()->with('fail', ' Invalid Token !! Reset Password Again !! Link is not valid ');
+        }
+    }
+
     public function _delete(Request $request)
     {
         // $validators = Validator::make($request->all(), [
@@ -93,6 +173,7 @@ class UserController extends Controller
 
     public function _users()
     {
+
         // $user = User::all();
         // if (!$user) {
         //     $response = response()->json(['status' => 'true', 'message' => " The Table is Empty !!", 'status' => 201]);
