@@ -20,7 +20,9 @@ Add Policy
                             <tr>
                                 <td scope="row"><img src="{{ $companyid['logo'] }}"
                                         class="img-fluid|thumbnail rounded-top|rounded-end|rounded-bottom|rounded-start|rounded-circle|"
-                                        alt="image" style="height: 50px; width:100px">  <strong style="margin-left: 20px;margin-right:20px">{{ $companyid['name'] }}</strong> </td>
+                                        alt="image" style="height: 50px; width:100px"> <strong
+                                        style="margin-left: 20px;margin-right:20px">{{ $companyid['name'] }}</strong>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
