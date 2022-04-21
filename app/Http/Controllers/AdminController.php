@@ -43,7 +43,7 @@ class AdminController extends Controller
         if (Session::has('user') && ((Session::get('user')['type'] == 'superadmin') || (Session::get('user')['type'] == 'admin'))) {
             return view('Admin.request');
         } else {
-            return redirect('adminLogin');
+            return redirect('/adminLogin');
         }
     }
 
