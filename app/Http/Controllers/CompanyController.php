@@ -85,13 +85,11 @@ class CompanyController extends Controller
         // return $request;
         if (Session::has('user') && ((Session::get('user')['type'] == 'superadmin') || (Session::get('user')['type'] == 'admin'))) {
             $validators = $request->validate([
-                'r_no' => 'required|numeric|unique:companies,r_no',
                 'name' => 'required|min:3',
                 'about' => 'required|min:6'
             ]);
 
             $company = Company::find($request->id);
-            $company->r_no = $request->r_no;
             $company->name = $request->name;
             if ($request->logo) {
                 $company->logo = $request->logo;

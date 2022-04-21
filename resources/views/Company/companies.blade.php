@@ -18,6 +18,7 @@ Companies
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
+                <th> Logo </th>
                 <th>Reg no</th>
                 <th>Name</th>
                 <th>About</th>
@@ -27,6 +28,7 @@ Companies
         <tbody>
             @foreach ($companies as $company)
             <tr>
+                <td><img src="{{ $company['logo'] }}" alt="logo" height="50" width="100"></td>
                 <td>{{ $company['r_no'] }}</td>
                 <td>{{ $company['name'] }}</td>
                 <td>{{ $company['about'] }}</td>
