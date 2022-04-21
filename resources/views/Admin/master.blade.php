@@ -23,7 +23,7 @@
     </style>
     <title>@yield('title')</title>
 </head>
-<body>
+<body style="background-color:white ">
     <div id="mainCoantiner">
         <div class="main-header">
 

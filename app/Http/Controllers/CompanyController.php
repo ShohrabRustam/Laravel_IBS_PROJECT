@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CompanyController extends Controller
 {
@@ -32,13 +33,26 @@ class CompanyController extends Controller
 
     public function _companies()
     {
-
-        $company = Company::all();
-
-        return redirect('companies')->with('company',$company);
-
+        if (Session::has('user') && ((Session::get('user')['type'] == 'superadmin') || (Session::get('user')['type'] == 'admin'))) {
+            $company =Company::all();
+            // return $company;
+            return view('Admin.companies')->with('companies',$company);
+        } else {
+            return redirect('adminLogin');
+        }
+        // return "hello";
 
     }
+
+    public function _addCompany()
+    {
+        if (Session::has('user') && ((Session::get('user')['type'] == 'superadmin') || (Session::get('user')['type'] == 'admin'))) {
+            return view('Admin.company');
+        } else {
+            return redirect('adminLogin');
+        }
+    }
+
 
     public function _delete(Request $request)
     {
