@@ -47,7 +47,7 @@ class CompanyController extends Controller
     public function _addCompany()
     {
         if (Session::has('user') && ((Session::get('user')['type'] == 'superadmin') || (Session::get('user')['type'] == 'admin'))) {
-            return view('Company.companies');
+            return view('Company.company');
         } else {
             return redirect('adminLogin');
         }
