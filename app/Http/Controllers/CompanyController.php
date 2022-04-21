@@ -25,7 +25,7 @@ class CompanyController extends Controller
         }
         $response = $company->save();
         if ($response) {
-            return back()->with('success', 'Company Registered Successfully !!!');
+            return redirect('/companies');
         } else {
             return back()->with('fail', 'Ohooo .. Something Wrong !!');
         }
