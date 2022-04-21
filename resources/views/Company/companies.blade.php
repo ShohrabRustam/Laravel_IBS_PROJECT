@@ -33,7 +33,7 @@ Companies
                 <td style="margin-left:5px">
                     <a href="/addPolicy/{{ $company['id'] }}'"><i class="fas fa fa-plus fa-x"
                             style="margin-left: 25px"></i></a>
-                    <a href="/editCompany/{{ $company['id'] }}"><i class="fas fa fa-edit fa-x"
+                    <a href="/updateCompany/{{ $company['id'] }}"><i class="fas fa fa-edit fa-x"
                             style="margin-left: 25px"></i></a>
                     <a href="/showPolicies/{{ $company['id'] }}"><i class="fa fa-eye" aria-hidden="true"
                             style="margin-left: 25px"></i></a>

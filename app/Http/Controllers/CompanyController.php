@@ -72,6 +72,21 @@ class CompanyController extends Controller
         return $response;
     }
 
+    public function _updateCompanyPage($id){
+        if (Session::has('user') && ((Session::get('user')['type'] == 'superadmin') || (Session::get('user')['type'] == 'admin'))) {
+            $company = Company::find($id);
+            if($company){
+            return view('Company.updateCompany')->with('company',$company);
+            }
+            else{
+                return back()->with('fail','Url is not correct ');
+            }
+        }
+        else{
+            return redirect('/adminLogin');
+        }
+    }
+
     public function _update(Request $request)
     {
         $validators = $request->validate( [

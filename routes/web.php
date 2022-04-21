@@ -40,13 +40,15 @@ Route::get('/carInsurance', [InsuranceController::class, '_car']);
 Route::get('/bikeInsurance', [InsuranceController::class, '_bike']);
 
 
-Route::get('/adminHome', [AdminController::class, '_index']);
 Route::get('/companies', [CompanyController::class, '_companies']);
 Route::get('/addCompany', [CompanyController::class, '_addCompany']);
+Route::get('/updateCompany/{id?}', [CompanyController::class, '_updateCompanyPage'])->name('updateCompany');
+Route::post('/updateCompany', [CompanyController::class, '_updateCompany']);
 Route::post('/addCompany', [CompanyController::class, '_register'])->name('addCompany');
 Route::get('/addPolicy/{id?}', [CompanyPolicyController::class, '_addPolicy'])->name('addPolicy');
 
 
+Route::get('/adminHome', [AdminController::class, '_index']);
 Route::get('/claimPage', [AdminController::class, '_claim']);
 Route::get('/adminLogin', [AdminController::class, '_loginPage'])->middleware('adminLogin');
 Route::get('/requestPage', [AdminController::class, '_request']);

@@ -1,0 +1,130 @@
+@extends('Admin.master')
+@section('title')
+    Update Company
+@endsection
+@section('section')
+    <div class="container py-3">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <span class="anchor" id="formContact"></span>
+                <hr class="my-5">
+                <!-- form contact -->
+                <div class="card card-outline-secondary">
+                    <div class="card-header">
+                        <h3 class="mb-0">Update Company Details </h3>
+                    </div>
+                    <div class="card-body">
+                        @if(Session::has('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ Session::get('success') }}
+                        </div>
+                        @endif
+                        @if(Session::has('fail'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ Session::get('fail') }}
+                        </div>
+                        @endif
+
+                        <form autocomplete="off" action=" {{ URL::to('/updateCompany') }} " method="POST"
+                            class="form" role="form">
+                            @csrf
+                            <fieldset>
+                                <input type="hidden" value="{{ $company['id'] }}">
+                                @error('r_no')
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <label class="mb-0" for="r_no">Registration Number</label>
+                                <div class="row mb-1">
+                                    <div class="col-lg-12">
+                                        <input class="form-control" name="r_no" required="" type="number" min="0" value="{{ $company['r_no'] ?? old('r_no') }}">
+                                    </div>
+                                </div>
+
+                                @error('name')
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <label class="mb-0" for="name">Company Name</label>
+                                <div class="row mb-1">
+                                    <div class="col-lg-12">
+                                        <input class="form-control" name="name" required="" type="text" value="{{ $company['name'] ?? old('name') }}" required>
+                                    </div>
+                                </div>
+                                @error('logo')
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                                <label class="mb-0" for="link">Link for Logo Optional</label>
+                                <div class="row mb-1">
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" name="logo" type="text" value="{{ $company['logo'] ?? old('logo')}}"></textarea>
+                                    </div>
+                                </div>
+
+                                @error('about')
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                                <label class="mb-0" for="about">About</label>
+                                <div class="row mb-1">
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" name="about" required="" type="text" value="{{ $company['about']?? old('about') }}"></textarea>
+                                    </div>
+                                </div>
+
+                                <br>
+                                <button class="btn btn-secondary btn-lg float-right" type="submit">Update</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div><!-- /form contact -->
+            </div>
+            <!--/col-->
+        </div>
+
+    </div>
+    <!-- Scroll to Top -->
+    <a id="scroll-to-top" href="#" class="btn btn-primary btn-lg" role="button" title="Return to top of page"
+        data-toggle="tooltip" data-placement="left"><i class="fa fa-arrow-up"></i></a>
+
+
+    <style>
+        .helpHead {
+            color: navy;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        /* Scroll to Top */
+        #scroll-to-top {
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+        }
+
+        button:hover {
+            background: #03e9f4;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 100px #03e9f4;
+            top: 0;
+            background: linear-gradient(90deg, transparent, #03e9f4);
+            animation: btn-anim1 1s linear infinite;
+        }
+
+    </style>
+@endsection
