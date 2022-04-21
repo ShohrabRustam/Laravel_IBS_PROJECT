@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDaskboardController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CompanyPolicyController;
 use App\Http\Controllers\DeskboardCommonController;
 use App\Http\Controllers\HelpController;
 use App\Http\Controllers\SuperAdminController;
@@ -56,6 +57,12 @@ Route::get('/adminSignup', [AdminDaskboardController::class, '_signupAdmin'])->m
 Route::post('/adminSignup', [AdminController::class, '_signup'])->name('adminSignup');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+Route::get('/addPolicy/{id?}', [CompanyPolicyController::class, '_addPolicy'])->name('addPolicy');
+
+
 
 
 

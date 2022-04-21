@@ -6,9 +6,30 @@ use App\Models\Company;
 use App\Models\CompanyPolicy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
+
 
 class CompanyPolicyController extends Controller
 {    //
+
+    public function _addPolicy($id)
+    {
+        $companyid = Company::find($id);
+        if ($companyid) {
+            if (Session::has('user')) {
+                if (Session::get('user')['type'] === 'admin' || Session::get('user')['type'] === 'superadmin') {
+                    return view('Company.addPolicy')->with('companyid', $companyid);
+                } else {
+                    return redirect('/login');
+                }
+            }else{
+            return redirect('/login');
+            }
+        } else {
+            return view('error');
+        }
+    }
+
     public function _register(Request $request)
     {
         $validators = Validator::make($request->all(), [
@@ -83,6 +104,4 @@ class CompanyPolicyController extends Controller
         }
         return $response;
     }
-
-
 }
