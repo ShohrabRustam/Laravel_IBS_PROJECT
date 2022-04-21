@@ -6,4 +6,9 @@
 <div style="color: black" class="float-left" >
 <a href="{{ URL::to('/addCompany') }}" class="float-left"><i class="fas fa fa-plus fa-x"></i>Add Company</a>
 </div>
+@foreach (companies as company)
+{{ company['r_no'] }}
+@endforeach
+
+@endforeach
 @endsection

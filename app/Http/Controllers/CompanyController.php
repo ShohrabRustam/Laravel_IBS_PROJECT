@@ -32,14 +32,12 @@ class CompanyController extends Controller
 
     public function _companies()
     {
+
         $company = Company::all();
-        if (!$company) {
-            $response = response()->json(['status' => 'true', 'message' => " The Table is Empty !!", 'status' => 201]);
-        } else {
-            $response = response()->json(['status' => 'true', 'message' => " All Company Details !!", 'status' => 201]);
-        }
-        // return $companies;
-        return $response;
+
+        return redirect('companies')->with('company',$company);
+
+
     }
 
     public function _delete(Request $request)
