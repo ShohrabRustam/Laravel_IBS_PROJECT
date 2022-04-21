@@ -29,7 +29,7 @@
                             class="form" role="form">
                             @csrf
                             <fieldset>
-                                <input type="hidden" value="{{ $company['id'] }}">
+                                <input type="hidden" name="id" value="{{ $company['id'] }}">
                                 @error('r_no')
                                     <div class="alert alert-danger" role="alert">
                                         {{ $message }}
@@ -38,7 +38,7 @@
                                 <label class="mb-0" for="r_no">Registration Number</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control" name="r_no" required="" type="number" min="0" value="{{ $company['r_no'] ?? old('r_no') }}">
+                                        <input class="form-control" name="r_no" required="" type="number" min="0" value="{{ $company['r_no'] ?? old('r_no') }}" readonly>
                                     </div>
                                 </div>
 
@@ -62,7 +62,7 @@
                                 <label class="mb-0" for="link">Link for Logo Optional</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <textarea class="form-control" name="logo" type="text" value="{{ $company['logo'] ?? old('logo')}}"></textarea>
+                                        <textarea class="form-control" name="logo" type="text" value="{{ $company['logo'] ?? old('logo')}}" placeholder="Logo is optional "></textarea>
                                     </div>
                                 </div>
 

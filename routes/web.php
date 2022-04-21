@@ -42,9 +42,10 @@ Route::get('/bikeInsurance', [InsuranceController::class, '_bike']);
 
 Route::get('/companies', [CompanyController::class, '_companies']);
 Route::get('/addCompany', [CompanyController::class, '_addCompany']);
-Route::get('/updateCompany/{id?}', [CompanyController::class, '_updateCompanyPage'])->name('updateCompany');
-Route::post('/updateCompany', [CompanyController::class, '_updateCompany']);
 Route::post('/addCompany', [CompanyController::class, '_register'])->name('addCompany');
+Route::get('/updateCompany/{id?}', [CompanyController::class, '_updateCompanyPage'])->name('updateCompany');
+Route::post('/updateCompany/{id?}', [CompanyController::class, '_updateCompany'])->name('updateCompany');
+Route::get('/deleteCompany/{id?}',[CompanyController::class,'_delete']);
 Route::get('/addPolicy/{id?}', [CompanyPolicyController::class, '_addPolicy'])->name('addPolicy');
 
 

@@ -37,7 +37,7 @@ Companies
                             style="margin-left: 25px"></i></a>
                     <a href="/showPolicies/{{ $company['id'] }}"><i class="fa fa-eye" aria-hidden="true"
                             style="margin-left: 25px"></i></a>
-                    <a href="/deleteCompany/{{ $company['id']"><i class="fa fa-trash" style="margin-left: 25px"></i></a>
+                    <a href="/deleteCompany/{{ $company['id']}}"><i class="fa fa-trash" style="margin-left: 25px"></i></a>
                 </td>
 
             </tr>
