@@ -15,6 +15,30 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    public function _index()
+    {
+        return view('Users.home');
+    }
+
+    public function _contact(){
+        return view('Users.contact');
+    }
+
+
+    public function _about(){
+        return view('Users.about');
+    }
+
+
+    public function _help()
+    {
+        return view('Users.help');
+    }
+
+    public function _signupPage(){
+        return view('Users.signup');
+    }
+
     public function _signup(Request $request)
     {
         $validators = $request->validate([
@@ -36,6 +60,11 @@ class UserController extends Controller
             return back()->with('fail', 'Ohooo .. Something Wrong !!');
         }
     }
+
+    public function _loginPage(){
+        return view('Users.login');
+    }
+
 
     public function  _login(Request $request)
     {
@@ -124,6 +153,7 @@ class UserController extends Controller
 
     public function _resetForm(Request $request)
     {
+
         // return $request->all();
         $validators = $request->validate([
             'email' => 'required|max:255|exists:users,email',

@@ -11,6 +11,35 @@ use Illuminate\Support\Facades\Session;
 
 class SuperAdminController extends Controller
 {
+    public function _homeSuperadmin()
+    {
+        if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
+            return view('SuperAdmin.home');
+        } else {
+            return redirect('/superadminLogin');
+        }
+    }
+
+    public function _users()
+    {
+        if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
+            return view('SuperAdmin.users');
+        }
+    }
+
+    public function _admins()
+    {
+        if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
+            return view('SuperAdmin.admins');
+        }
+    }
+
+    public function _loginSuperadminPage()
+    {
+        return view('SuperAdmin.login');
+    }
+
+
     public function _login(Request $request)
     {
             $validators =$request->validate( [
