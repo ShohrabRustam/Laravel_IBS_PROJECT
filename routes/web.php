@@ -41,29 +41,31 @@ Route::get('/bikeInsurance', [InsuranceController::class, '_bike']);
 
 
 Route::get('/adminHome', [AdminController::class, '_index']);
-Route::get('/adminLogin', [AdminController::class, '_loginPage'])->middleware('adminLogin');
-Route::post('/adminLogin', [AdminController::class, '_login'])->middleware('adminLogin');
-Route::get('/requestPage', [AdminController::class, '_request']);
 Route::get('/companies', [CompanyController::class, '_companies']);
 Route::get('/addCompany', [CompanyController::class, '_addCompany']);
 Route::post('/addCompany', [CompanyController::class, '_register'])->name('addCompany');
-Route::get('/adminLogout', [AdminController::class, '_logout']);
+Route::get('/addPolicy/{id?}', [CompanyPolicyController::class, '_addPolicy'])->name('addPolicy');
+
+
 Route::get('/claimPage', [AdminController::class, '_claim']);
+Route::get('/adminLogin', [AdminController::class, '_loginPage'])->middleware('adminLogin');
+Route::get('/requestPage', [AdminController::class, '_request']);
+Route::get('/adminSignup', [AdminController::class, '_signupAdmin'])->middleware('adminLogin');
+Route::post('/adminSignup', [AdminController::class, '_signup'])->name('adminSignup');
+Route::post('/adminLogin', [AdminController::class, '_login'])->middleware('adminLogin');
+Route::get('/adminLogout', [AdminController::class, '_logout']);
 
 Route::get('/superadminHome', [SuperAdminController::class, '_homeSuperadmin']);
 Route::get('/usersList', [SuperAdminController::class, '_users']);
 Route::get('/adminsList', [SuperAdminController::class, '_admins']);
-Route::get('/superadminLogin', [AdminDaskboardController::class, '_loginSuperadminPage']);
 Route::post('/superadminLogin', [SuperAdminController::class, '_login'])->name('superadminLogin');
 Route::get('/superadminLogout', [SuperAdminController::class, '_logout']);
-Route::get('/adminSignup', [AdminController::class, '_signupAdmin'])->middleware('adminLogin');
-Route::post('/adminSignup', [AdminController::class, '_signup'])->name('adminSignup');
+Route::get('/superadminLogin', [SuperAdminController::class, '_loginSuperadminPage']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/addPolicy/{id?}', [CompanyPolicyController::class, '_addPolicy'])->name('addPolicy');
+
 
 
 
