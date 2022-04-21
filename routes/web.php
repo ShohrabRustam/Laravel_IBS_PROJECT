@@ -59,10 +59,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-
-
-
-
 Route::get('/forgetpassword',[UserController::class,'_showForgotPasswordForm']);
 
 Route::post('/forgetpassword',[UserController::class,'_sendResetLink'])->name('forgetPassword');
