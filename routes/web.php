@@ -32,6 +32,10 @@ Route::post('/signup', [UserController::class, '_signup'])->name('signup');
 Route::get('/login', [UserController::class, '_loginPage'])->middleware('userLogin');
 Route::post('/login', [UserController::class, '_login'])->name('login');
 Route::get('/logout', [UserController::class, '_logout'])->name('logout');
+Route::get('/usersList', [UserController::class, '_users']);
+Route::get('/updateUser/{id?}',[UserController::class,'_updatePage'])->name('updateUser');
+Route::post('/updateUser/{id?}',[UserController::class,'_update'])->name('updateUser');
+Route::get('/deleteUser/{id?}', [UserController::class, '_delete'])->name('deleteUser');
 
 
 Route::get('/lifeInsurance', [InsuranceController::class, '_life']);
@@ -60,10 +64,10 @@ Route::get('/adminSignup', [AdminController::class, '_signupAdmin'])->middleware
 Route::post('/adminSignup', [AdminController::class, '_signup'])->name('adminSignup');
 Route::post('/adminLogin', [AdminController::class, '_login'])->middleware('adminLogin');
 Route::get('/adminLogout', [AdminController::class, '_logout']);
+Route::get('/adminsList', [AdminController::class, '_admins']);
+
 
 Route::get('/superadminHome', [SuperAdminController::class, '_homeSuperadmin']);
-Route::get('/usersList', [SuperAdminController::class, '_users']);
-Route::get('/adminsList', [SuperAdminController::class, '_admins']);
 Route::post('/superadminLogin', [SuperAdminController::class, '_login'])->name('superadminLogin');
 Route::get('/superadminLogout', [SuperAdminController::class, '_logout']);
 Route::get('/superadminLogin', [SuperAdminController::class, '_loginSuperadminPage']);

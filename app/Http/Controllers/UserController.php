@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Crypt;
 use App\Models\PasswordReset;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -20,14 +20,28 @@ class UserController extends Controller
         return view('Users.home');
     }
 
-    public function _contact(){
+    public function _contact()
+    {
         return view('Users.contact');
     }
 
 
-    public function _about(){
+    public function _about()
+    {
         return view('Users.about');
     }
+
+    public function _users()
+    {
+        if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
+            $users=User::all();
+            return view('Users.users')->with('users',$users);
+        }
+        else{
+            return redirect('/superadminLogin');
+        }
+    }
+
 
 
     public function _help()
@@ -35,7 +49,8 @@ class UserController extends Controller
         return view('Users.help');
     }
 
-    public function _signupPage(){
+    public function _signupPage()
+    {
         return view('Users.signup');
     }
 
@@ -61,7 +76,8 @@ class UserController extends Controller
         }
     }
 
-        public function _loginPage(){
+    public function _loginPage()
+    {
         return view('Users.login');
     }
 
@@ -79,31 +95,40 @@ class UserController extends Controller
             return back()->with('fail', "The Email or Password Incorrect !!");
         } else {
             $request->session()->put('user', $user);
-            return redirect('/');
+           return redirect('/');
         }
     }
 
+    public function _updatePage($id)
+    {
+        $user = User::find($id);
+        if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
+            return view('Users.updatePage')->with('user',$user);
+        } else {
+            return redirect('/superadminLogin');
+        }
+    }
 
     public function _update(Request $request)
     {
-        // $validators = Validator::make($request->all(), [
-        //     'name' => 'required|regex:/^[a-zA-Z\s]+$/',
-        //     'email' => 'required|max:255',
-        //     'mobile' => 'required|min:6000000000|max:9999999999|numeric',
-        //     'password' => 'required|min:6',
-        // ]);
-        // if ($validators->passes()) {
-        //     $user = User::find($request->id);
-        //     $user->name = $request->name;
-        //     $user->email = $request->email;
-        //     $user->mobile = $request->mobile;
-        //     $user->password = Hash::make($request->password);
-        //     $user->save();
-        //     $response = response()->json(['status' => 'true', 'message' => ' User Update Successfully', 'code' => 201]);
-        // } else {
-        //     $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
-        // }
-        // return $response;
+        $validators = $request->validate([
+            'id'=>'required',
+            'name' => 'required|regex:/^[a-zA-Z\s]+$/',
+            'mobile' => 'required|min:6000000000|max:9999999999|numeric',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required_with:password|same:password|min:6'
+        ]);
+        $user = User::findOrFail($request->id);
+        $user->email=$request->email;
+        $user->name = $request->name;
+        $user->mobile = $request->mobile;
+        $user->password = Hash::make($request->password);
+        $response = $user->save();
+        if ($response) {
+            return redirect('/usersList');
+        } else {
+            return back()->with('fail', 'Ohooo .. Something Wrong !!');
+        }
     }
 
     public function _showForgotPasswordForm()
@@ -182,36 +207,17 @@ class UserController extends Controller
         }
     }
 
-    public function _delete(Request $request)
+    public function _delete($id)
     {
-        // $validators = Validator::make($request->all(), [
-        //     'id' => 'required'
-        // ]);
-        // if ($validators->fails()) {
-        //     $response = response()->json(['status' => 'false', 'error' => $validators->errors()->all(), 'status' => 409]);
-        // } else {
-        //     $user = User::find($request->id);
-        //     if ($user) {
-        //         $user = User::find($request->id)->delete();
-        //         $response = response()->json(['status' => 'false', 'message' => " User Delete Successfully !!", 'status' => 201]);
-        //     } else {
-        //         $response = response()->json(['status' => 'false', 'message' => " User Does not exist ", 'status' => 404]);
-        //     }
-        // }
-        // return $response;
-    }
+        if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
+            $policy = User::find($id)->delete();
+            return redirect('/usersList');
 
-    public function _users()
-    {
+        }
+        else{
+            return redirect('superadminLogin');
+        }
 
-        // $user = User::all();
-        // if (!$user) {
-        //     $response = response()->json(['status' => 'true', 'message' => " The Table is Empty !!", 'status' => 201]);
-        // } else {
-        //     $response = response()->json(['status' => 'true', 'message' => " All User Details !!", 'status' => 201]);
-        // }
-        // // return $user;
-        // return $response;
     }
 
     public function _logout()

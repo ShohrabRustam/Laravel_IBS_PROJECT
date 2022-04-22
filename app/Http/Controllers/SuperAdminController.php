@@ -20,19 +20,7 @@ class SuperAdminController extends Controller
         }
     }
 
-    public function _users()
-    {
-        if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
-            return view('SuperAdmin.users');
-        }
-    }
 
-    public function _admins()
-    {
-        if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
-            return view('SuperAdmin.admins');
-        }
-    }
 
     public function _loginSuperadminPage()
     {

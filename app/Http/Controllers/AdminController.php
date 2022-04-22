@@ -21,7 +21,7 @@ class AdminController extends Controller
         if (Session::has('user') && ((Session::get('user')['type'] == 'superadmin') || (Session::get('user')['type'] == 'admin'))) {
             return view('Admin.home');
         } else {
-            return redirect('adminLogin');
+            return redirect('/adminLogin');
         }
     }
 
@@ -32,7 +32,7 @@ class AdminController extends Controller
         if (Session::has('user') && ((Session::get('user')['type'] == 'superadmin') || (Session::get('user')['type'] == 'admin'))) {
             return view('Admin.claim');
         } else {
-            return redirect('adminLogin');
+            return redirect('/adminLogin');
         }
     }
 
@@ -92,6 +92,18 @@ class AdminController extends Controller
         return redirect('/adminHome');
     }
 
+    public function _admins()
+    {
+        if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
+            $admins=Admin::all();
+            return view('Admin.admins')->with('admins',$admins);
+        }
+        else{
+            return redirect('/superadminLogin');
+        }
+    }
+
+
     public function _delete(Request $request)
     {
         $validators = Validator::make($request->all(), [
@@ -111,13 +123,6 @@ class AdminController extends Controller
         return $response;
     }
 
-
-    public function _admins()
-    {
-        $admin = Admin::all();
-
-        return $admin;
-    }
 
     public function _update(Request $request)
     {
@@ -146,7 +151,7 @@ class AdminController extends Controller
             }
             if (Session::get('user')['type'] === 'superadmin') {
                 Session::forget('user');
-                return redirect('superadminLogin');
+                return redirect('/superadminLogin');
             }
         } else {
             return redirect('/adminLogin');
