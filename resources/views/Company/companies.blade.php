@@ -56,7 +56,4 @@ $('#example').DataTable();
 } );
 </script>
 
-@foreach ($companies as $company)
-
-@endforeach
 @endsection

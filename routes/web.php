@@ -65,6 +65,7 @@ Route::post('/adminSignup', [AdminController::class, '_signup'])->name('adminSig
 Route::post('/adminLogin', [AdminController::class, '_login'])->middleware('adminLogin');
 Route::get('/adminLogout', [AdminController::class, '_logout']);
 Route::get('/adminsList', [AdminController::class, '_admins']);
+Route::get('/deleteAdmin/{id?}', [AdminController::class, '_delete']);
 
 
 Route::get('/superadminHome', [SuperAdminController::class, '_homeSuperadmin']);
