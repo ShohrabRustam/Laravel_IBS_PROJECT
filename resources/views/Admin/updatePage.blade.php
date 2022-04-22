@@ -1,6 +1,6 @@
 @extends('SuperAdmin.master')
 @section('title')
-    Update User
+    Update Admin
 @endsection
 @section('section')
     <div class="container py-3">
@@ -12,7 +12,7 @@
                 <!-- form contact -->
                 <div class="card card-outline-secondary">
                     <div class="card-header">
-                        <h3 class="mb-0">Update User Details</h3>
+                        <h3 class="mb-0">Update Admin Details</h3>
                     </div>
                     <div class="card-body">
                         @if(Session::has('success'))
@@ -25,11 +25,11 @@
                             {{ Session::get('fail') }}
                         </div>
                         @endif
-                        <form autocomplete="off" action=" {{ URL::to('/updateUser') }} " method="POST" class="form"
+                        <form autocomplete="off" action=" {{ URL::to('/updateAdmin') }} " method="POST" class="form"
                             role="form">
                             @csrf
                             <fieldset>
-                                <input class="form-control"  name="id" type="hidden" value="{{ $user['id'] ?? old('id') }}" >
+                                <input class="form-control"  name="id" type="hidden" value="{{ $admin['id'] ?? old('id') }}" >
                                 @error('email')
                                 <div class="alert alert-danger" role="alert">
                                     {{ $message }}
@@ -38,7 +38,7 @@
                                 <label class="mb-0" for="email">Email</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control"  name="email" required="" type="email" value="{{ $user['email'] ?? old('email') }}" readonly>
+                                        <input class="form-control"  name="email" required="" type="email" value="{{ $admin['email'] ?? old('email') }}" readonly>
                                     </div>
                                 </div>
                                 @error('name')
@@ -49,7 +49,7 @@
                                 <label class="mb-0" for="name">Name</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control" name="name" required="" type="text" value="{{ $user['name'] ?? old('name') }}">
+                                        <input class="form-control" name="name" required="" type="text" value="{{ $admin['name'] ?? old('name') }}">
                                     </div>
                                 </div>
 
@@ -61,7 +61,7 @@
                                 <label class="mb-0" for="mobile">Mobile</label>
                                 <div class="row mb-1">
                                     <div class="col-lg-12">
-                                        <input class="form-control"  name="mobile" required="" type="number" min="0" value="{{ $user['mobile'] ?? old('mobile') }}">
+                                        <input class="form-control"  name="mobile" required="" type="number" min="0" value="{{ $admin['mobile'] ?? old('mobile') }}">
                                     </div>
                                 </div>
 
@@ -91,7 +91,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <button class="btn btn-secondary btn-lg float-right" type="submit">Update User</button>
+                                <button class="btn btn-secondary btn-lg float-right" type="submit">Update Admin</button>
                                 <br>
                             </fieldset>
                         </form>

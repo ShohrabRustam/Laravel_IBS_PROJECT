@@ -45,7 +45,7 @@ class AdminController extends Controller
     public function _signupAdmin()
     {
         if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
-            return view('SuperAdmin.signupAdmin');
+            return view('Admin.signupAdmin');
         } else {
             return redirect('/superadminLogin');
         }
@@ -119,6 +119,15 @@ class AdminController extends Controller
         }
     }
 
+    public function _updatePage($id)
+        {
+            $user = Admin::find($id);
+            if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
+                return view('Admin.updatePage')->with('user',$user);
+            } else {
+                return redirect('/superadminLogin');
+            }
+        }
 
     public function _update(Request $request)
     {
