@@ -17,7 +17,7 @@ Companies
 
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
-            <tr>
+            <tr style="background: rgb(184, 197, 214);">
                 <th> Logo </th>
                 <th>Reg no</th>
                 <th>Name</th>

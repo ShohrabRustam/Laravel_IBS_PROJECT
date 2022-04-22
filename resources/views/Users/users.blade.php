@@ -19,7 +19,7 @@ Users List
     @endif
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
-            <tr>
+            <tr style="background: rgb(230, 161, 32);">
                 <th>Id </th>
                 <th>Name </th>
                 <th>Email</th>

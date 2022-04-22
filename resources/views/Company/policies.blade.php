@@ -14,7 +14,7 @@ Policies
     @endif
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
-            <tr>
+            <tr style="background: rgb(230, 161, 32);">
                 <th>Name </th>
                 <th>Type</th>
                 <th>Price</th>
