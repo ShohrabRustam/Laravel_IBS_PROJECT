@@ -121,9 +121,13 @@ class AdminController extends Controller
 
     public function _updatePage($id)
         {
-            $user = Admin::find($id);
             if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
-                return view('Admin.updatePage')->with('user',$user);
+                $admin = Admin::find($id);
+                if($admin){
+                return view('Admin.updatePage')->with('admin',$admin);
+                }else{
+                    return back()->with('fail',' Something Wrong !!');
+                }
             } else {
                 return redirect('/superadminLogin');
             }
@@ -132,17 +136,27 @@ class AdminController extends Controller
     public function _update(Request $request)
     {
         $validators = $request->validate([
+            'id'=>'required',
             'name' => 'required|regex:/^[a-zA-Z\s]+$/',
-            'email' => 'required|max:255',
             'mobile' => 'required|min:6000000000|max:9999999999|numeric',
             'password' => 'required|min:6',
+            'confirm_password' => 'required_with:password|same:password|min:6'
         ]);
-        $admin = Admin::find($request->id);
+        if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
+        $admin = Admin::findOrFail($request->id);
+        $admin->email=$request->email;
         $admin->name = $request->name;
-        $admin->email = $request->email;
         $admin->mobile = $request->mobile;
         $admin->password = Hash::make($request->password);
-        $admin->save();
+        $response = $admin->save();
+        if ($response) {
+            return redirect('/adminsList');
+        } else {
+            return back()->with('fail', 'Ohooo .. Something Wrong !!');
+        }
+    }else{
+        return redirect('/superadminLogin');
+    }
     }
 
 

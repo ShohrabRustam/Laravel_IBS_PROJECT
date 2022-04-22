@@ -106,6 +106,7 @@ class UserController extends Controller
                 'password' => 'required|min:6',
                 'confirm_password' => 'required_with:password|same:password|min:6'
             ]);
+            if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
             $user = User::findOrFail($request->id);
             $user->email=$request->email;
             $user->name = $request->name;
@@ -117,6 +118,9 @@ class UserController extends Controller
             } else {
                 return back()->with('fail', 'Ohooo .. Something Wrong !!');
             }
+        }else{
+            return redirect('/superadminLogin');
+        }
         }
 
 
