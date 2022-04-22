@@ -214,8 +214,12 @@ class UserController extends Controller
     public function _delete($id)
     {
         if (Session::has('user') && (Session::get('user')['type'] == 'superadmin')) {
-            $policy = User::find($id)->delete();
+            $user = User::find($id)->delete();
+            if($user){
             return redirect('/usersList');
+            }else{
+                return back()->with('fail','Some thing wrong');
+            }
 
         }
         else{
