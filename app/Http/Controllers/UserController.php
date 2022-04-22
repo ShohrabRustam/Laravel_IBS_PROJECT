@@ -44,7 +44,7 @@ class UserController extends Controller
         $validators = $request->validate([
             'name' => 'required|regex:/^[a-zA-Z\s]+$/',
             'email' => 'required|max:255|unique:users',
-            'mobile' => 'required|min:6000000000|max:9999999999|numeric|unique:users',
+            'mobile' => 'required|min:6000000000|max:9999999999|numeric',
             'password' => 'required|min:6',
             'confirm_password' => 'required_with:password|same:password|min:6'
         ]);
