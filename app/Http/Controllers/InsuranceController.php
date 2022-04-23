@@ -30,7 +30,7 @@ class InsuranceController extends Controller
 
     public function _life(){
         if(Session::has('user')){
-        $policies = CompanyPolicy::where('policytype','Health')->get();
+        $policies = CompanyPolicy::where('policytype','Life')->get();
         return view('Users.lifeInsurance')->with('policies',$policies);
         }
         else{
