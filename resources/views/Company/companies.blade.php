@@ -7,6 +7,7 @@ Companies
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 <div class="container">
+    <center><h1 class="custom">Companies</h1></center>
     @if(Session::has('success'))
                         <div class="alert alert-success" role="alert">
                             {{ Session::get('success') }}
