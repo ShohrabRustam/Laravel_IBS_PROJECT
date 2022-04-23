@@ -8,10 +8,15 @@ Policies
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 <div class="container">
     @if(Session::has('success'))
-    <div class="alert alert-success" role="alert">
-        {{ Session::get('success') }}
-    </div>
-    @endif
+                        <div class="alert alert-success" role="alert">
+                            {{ Session::get('success') }}
+                        </div>
+                        @endif
+                        @if(Session::has('fail'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ Session::get('fail') }}
+                        </div>
+                        @endif
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr style="background: rgb(230, 161, 32);">

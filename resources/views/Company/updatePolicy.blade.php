@@ -15,6 +15,16 @@ Add Policy
                     <h3 class="mb-0">Update Policy </h3>
                 </div>
                 <div class="card-body">
+                    @if(Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('success') }}
+                    </div>
+                    @endif
+                    @if(Session::has('fail'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ Session::get('fail') }}
+                    </div>
+                    @endif
                     <table class="table table-light">
                         <tbody>
                             <tr>

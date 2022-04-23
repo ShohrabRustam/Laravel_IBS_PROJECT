@@ -53,9 +53,12 @@ class CompanyPolicyController extends Controller
             $policy->p_price = $request->p_price;
             $policy->c_price = $request->c_price;
             $policy->policy_period = $request->policy_period;
+            if($request->p_price>=$request->c_price){
+                return back()->with('fail','The Claim price can not be less than Policy Price');
+            }
             $response = $policy->save();
             if ($response) {
-                return redirect('/policies');
+                return redirect('/showPolicies'.'/'.$request->companyid)->with('success','Policy Added Suceessfully!!');
             } else {
                 return back()->with('fail', 'Something wrong');
             }
@@ -66,8 +69,9 @@ class CompanyPolicyController extends Controller
 
     public function _policies($id)
     {
-        $policies = CompanyPolicy::where('companyid', $id)->first();
-        if($policies){
+        $policy = Company::where('id', $id)->first();
+        $policies = CompanyPolicy::where('companyid', $id)->get();
+        if($policy){
         if (Session::has('user') && ((Session::get('user')['type'] == 'superadmin') || (Session::get('user')['type'] == 'admin'))) {
             return view('Company.policies')->with('policies', $policies);
         } else {

@@ -8,10 +8,15 @@ Companies
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 <div class="container">
     @if(Session::has('success'))
-    <div class="alert alert-success" role="alert">
-        {{ Session::get('success') }}
-    </div>
-    @endif
+                        <div class="alert alert-success" role="alert">
+                            {{ Session::get('success') }}
+                        </div>
+                        @endif
+                        @if(Session::has('fail'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ Session::get('fail') }}
+                        </div>
+                        @endif
     <a href="{{ URL::to('/addCompany') }}" class="float-left" style="margin-bottom: 50px"><i
             class="fas fa fa-plus fa-x"></i>Add Company</a>
 
