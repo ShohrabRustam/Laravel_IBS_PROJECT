@@ -54,6 +54,7 @@ Route::post('/addPolicy', [CompanyPolicyController::class, '_register'])->name('
 Route::get('/showPolicies/{id?}', [CompanyPolicyController::class, '_policies'])->name('showPolicies');
 Route::get('/updatePolicy/{id?}', [CompanyPolicyController::class, '_updatePolicyPage'])->name('updatePolicy');
 Route::post('/updatePolicy/{id?}', [CompanyPolicyController::class, '_update'])->name('updatePolicy');
+Route::get('/deletePolicy/{id?}', [CompanyPolicyController::class, '_delete'])->name('deletePolicy');
 
 
 

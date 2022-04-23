@@ -53,17 +53,6 @@ class CompanyController extends Controller
         }
     }
 
-    public function _delete($id)
-    {
-
-        $company = Company::find($id);
-        if ($company) {
-            $company = Company::find($id)->delete();
-            return redirect('/companies');
-        } else {
-            return back()->with('fail', 'Some thing wrong !!');
-        }
-    }
 
 
     public function _updateCompanyPage($id)
@@ -103,4 +92,18 @@ class CompanyController extends Controller
             return redirect('/adminLogin');
         }
     }
+
+
+    public function _delete($id)
+    {
+
+        $company = Company::find($id);
+        if ($company) {
+            $company = Company::find($id)->delete();
+            return redirect('/companies');
+        } else {
+            return back()->with('fail', 'Some thing wrong !!');
+        }
+    }
+
 }

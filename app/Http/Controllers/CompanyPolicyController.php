@@ -133,7 +133,20 @@ class CompanyPolicyController extends Controller
     }
 
 
-    public function _delete(Request $request)
+    public function _delete($id)
     {
+        if (Session::has('user') && ((Session::get('user')['type'] == 'superadmin') || (Session::get('user')['type'] == 'admin'))) {
+        $policy = CompanyPolicy::find($id);
+        if ($policy) {
+            $company = CompanyPolicy::find($id)->delete();
+            return redirect('/companies')->with('success','Policy Delete Successfully !!');
+        } else {
+            return back()->with('fail', 'Some thing wrong !!');
+        }
+    }else{
+        return redirect('/adminLogin');
     }
+    }
+
+
 }
