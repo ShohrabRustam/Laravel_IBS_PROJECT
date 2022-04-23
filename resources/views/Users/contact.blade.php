@@ -8,13 +8,13 @@
         margin-top: 30px;
         padding-top: 15px;
         padding-bottom: 15px;
-        background: rgba(0,0,0,0.10);  /* 50% transparent */  ">
+        background: rgba(255,0,0,0.10);  /* 50% transparent */  ">
 
 
         <!--Google map-->
         <div id="map-container-google-1" class="z-depth-1-half map-container">
             <iframe src="https://maps.google.com/maps?q=Bangalure&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-                style="border:0" allowfullscreen></iframe>
+                style="border:0; width:100%;" allowfullscreen></iframe>
         </div>
 
         <!--Google Maps-->
