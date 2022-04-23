@@ -25,52 +25,40 @@ Add Policy
                         {{ Session::get('fail') }}
                     </div>
                     @endif
-                    <table class="table table-light">
-                        <tbody>
-                            <tr>
-                                <td scope="row"><img src="{{ $companyid['logo'] }}"
-                                        class="img-fluid|thumbnail rounded-top|rounded-end|rounded-bottom|rounded-start|rounded-circle|"
-                                        alt="image" style="height: 50px; width:100px"> <strong
-                                        style="margin-left: 20px;margin-right:20px">{{ $companyid['name'] }}</strong>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    @if (Session::has('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ Session::get('suceess') }}
-                    </div>
-                    @endif
-                    @if (Session::has('fail'))
-                    <div class="alert alert-danger" role="alert">
-                        {{ Session::get('fail') }}
-                    </div>
-                    @endif
-                    <form autocomplete="off" action=" {{ URL::to('/updatePolicy') }} " method="POST" class="form"
-                        role="form">
+                    <form autocomplete="off" action=" {{ URL::to('/updatePolicy') }} " method="POST" class="form" role="form">
                         @csrf
                         <fieldset>
-                            <input type="hidden" name="companyid" value="{{ $companyid['id'] }}">
-                            @error('name')
+                            <input class="form-control" name="id" type="hidden" value="{{  $policy['id'] ?? old('id') }}" >
+
+                            <label class="mb-0" for="policyname">Company id</label>
+                            <div class="row mb-1">
+                                <div class="col-lg-12">
+                                    <input class="form-control" name="companyid" type="text" value="{{  $policy['companyid'] ?? old('policyname') }}" readonly>
+                                </div>
+                            </div>
+
+                            @error('policyname')
                             <div class="alert alert-danger" role="alert">
                                 {{ $message }}
                             </div>
                             @enderror
+
                             <label class="mb-0" for="policyname">Policy Name</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input class="form-control" name="policyname" required="" type="text" value="{{ old('policyname') }}">
+                                    <input class="form-control" name="policyname" type="text" value="{{  $policy['policyname'] ?? old('policyname') }}">
                                 </div>
                             </div>
 
-                            @error('policytype')                            <div class="alert alert-danger" role="alert">
+                            @error('policytype')
+                            <div class="alert alert-danger" role="alert">
                                 {{ $message }}
                             </div>
                             @enderror
                             <label class="mb-0" for="policytype">Policy Type</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <select class="form-control" name="policytype" placeholder="Select Policy" required>
+                                    <select class="form-control" name="policytype" value="{{ $policy['policytype'] ?? old('policytype') }}" placeholder="Select Policy">
                                         <option class="form-control" value="">Select Insurance</option>
                                         <option class="form-control" value="Health">Health</option>
                                         <option class="form-control" value="Life">Life</option>
@@ -89,13 +77,12 @@ Add Policy
                             <label class="mb-0" for="p_desc">Policy Desc</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input name="p_desc" class="form-control" type="text" required
-                                        value="{{ old('p_desc') }}">
+                                    <input name="p_desc" class="form-control" type="text" value="{{ $policy['p_desc'] ?? old('p_desc') }}">
                                 </div>
                             </div>
 
 
-                            @error('p_desc')
+                            @error('p_price')
                             <div class="alert alert-danger" role="alert">
                                 {{ $message }}
                             </div>
@@ -104,8 +91,7 @@ Add Policy
                             <label class="mb-0" for="p_price">Policy Price</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input name="p_price" class="form-control" type="number" min="0" required min="500"
-                                        value="{{ old('p_price') }}">
+                                    <input name="p_price" class="form-control" type="number" min="0" value="{{ $policy['p_price'] ?? old('p_price') }}">
                                 </div>
                             </div>
 
@@ -119,21 +105,25 @@ Add Policy
                             <label class="mb-0" for="c_price">Claim Price</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input name="c_price" class="form-control" type="number" min="0" min="5000" required
-                                        value="{{ old('c_price') }}">
+                                    <input name="c_price" class="form-control" type="number" min="0" value="{{ $policy['c_price'] ?? old('c_price') }}">
                                 </div>
                             </div>
 
 
-                            <label class="mb-0" for="c_price">Month Duration </label>
+                            @error('policy_period')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                            @enderror
+
+                            <label class="mb-0" for="policy_period">Month Duration </label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input name="policy_period" class="form-control" type="number" min="1" required
-                                        value="{{ old('policy_period') }}">
+                                    <input name="policy_period" class="form-control" type="number" value="{{ $policy['policy_period'] ?? old('policy_period') }}">
                                 </div>
                             </div>
                             <br>
-                            <button class="btn btn-secondary btn-lg float-right" type="submit">Register Policy</button>
+                            <button class="btn btn-secondary btn-lg float-right" type="submit">Update Policy</button>
                             <br>
                         </fieldset>
                     </form>

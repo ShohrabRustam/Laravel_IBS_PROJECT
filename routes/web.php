@@ -52,6 +52,10 @@ Route::get('/deleteCompany/{id?}',[CompanyController::class,'_delete']);
 Route::get('/addPolicy/{id?}', [CompanyPolicyController::class, '_addPolicy'])->name('addPolicy');
 Route::post('/addPolicy', [CompanyPolicyController::class, '_register'])->name('addPolicy');
 Route::get('/showPolicies/{id?}', [CompanyPolicyController::class, '_policies'])->name('showPolicies');
+Route::get('/updatePolicy/{id?}', [CompanyPolicyController::class, '_updatePolicyPage'])->name('updatePolicy');
+Route::post('/updatePolicy/{id?}', [CompanyPolicyController::class, '_update'])->name('updatePolicy');
+
+
 
 Route::get('/adminHome', [AdminController::class, '_index']);
 Route::get('/claimPage', [AdminController::class, '_claim']);
