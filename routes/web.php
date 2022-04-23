@@ -4,7 +4,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDaskboardController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyPolicyController;
-use App\Http\Controllers\DeskboardCommonController;
 use App\Http\Controllers\HelpController;
 use App\Http\Controllers\InsuranceController;
 use App\Http\Controllers\SuperAdminController;
@@ -52,9 +51,7 @@ Route::post('/updateCompany/{id?}', [CompanyController::class, '_updateCompany']
 Route::get('/deleteCompany/{id?}',[CompanyController::class,'_delete']);
 Route::get('/addPolicy/{id?}', [CompanyPolicyController::class, '_addPolicy'])->name('addPolicy');
 Route::post('/addPolicy', [CompanyPolicyController::class, '_register'])->name('addPolicy');
-Route::post('/addPolicy', [CompanyPolicyController::class, '_register'])->name('addPolicy');
 Route::get('/showPolicies/{id?}', [CompanyPolicyController::class, '_policies'])->name('showPolicies');
-
 
 Route::get('/adminHome', [AdminController::class, '_index']);
 Route::get('/claimPage', [AdminController::class, '_claim']);
@@ -76,10 +73,6 @@ Route::get('/superadminLogout', [SuperAdminController::class, '_logout']);
 Route::get('/superadminLogin', [SuperAdminController::class, '_loginSuperadminPage']);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
-
 
 
 

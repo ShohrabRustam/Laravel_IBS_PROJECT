@@ -18,7 +18,7 @@ Add Policy
                     <table class="table table-light">
                         <tbody>
                             <tr>
-                                <td scope="row"><img src="{{ $companyid['logo'] }}" class="img-fluid|thumbnail rounded-top|rounded-end|rounded-bottom|rounded-start|rounded-circle|" alt="image" style="height: 50px; width:100px"> <strong style="margin-left: 20px;margin-right:20px">{{ $companyid['name'] }}</strong>
+                                <td scope="row"><img src="{{ $company['logo'] }}" class="img-fluid|thumbnail rounded-top|rounded-end|rounded-bottom|rounded-start|rounded-circle|" alt="image" style="height: 50px; width:100px"> <strong style="margin-left: 20px;margin-right:20px">{{ $company['name'] }}</strong>
                                 </td>
                             </tr>
                         </tbody>
@@ -36,7 +36,7 @@ Add Policy
                     <form autocomplete="off" action=" {{ URL::to('/addPolicy') }} " method="POST" class="form" role="form">
                         @csrf
                         <fieldset>
-                            <input type="hidden" name="companyid" value="{{ $companyid['id'] }}">
+                            <input type="hidden" name="companyid" value="{{ $company['id'] }}">
                             @error('policyname')
                             <div class="alert alert-danger" role="alert">
                                 {{ $message }}

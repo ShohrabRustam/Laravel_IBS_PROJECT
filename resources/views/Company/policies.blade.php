@@ -32,21 +32,13 @@ Policies
                 <td>{{ $policy['c_price'] }}</td>
                 <td>{{ $policy['policy_period'] }}</td>
                 <td style="margin-left:5px">
-                    <a href="/addPolicy/{{ $policy['id'] }}'"><i class="fas fa fa-plus fa-x"
+                    <a href="/updatePolicy/{{ $policy['id'] }}"><i class="fas fa fa-edit fa-x"
                             style="margin-left: 25px"></i></a>
-                    <a href="/updateCompany/{{ $policy['id'] }}"><i class="fas fa fa-edit fa-x"
-                            style="margin-left: 25px"></i></a>
-                    <a href="/showPolicies/{{ $policy['id'] }}"><i class="fa fa-eye" aria-hidden="true"
-                            style="margin-left: 25px"></i></a>
-                    <a href="/deleteCompany/{{ $policy['id']}}"><i class="fa fa-trash" style="margin-left: 25px"></i></a>
+                    <a href="/deletePolicy/{{ $policy['id']}}"><i class="fa fa-trash" style="margin-left: 25px"></i></a>
                 </td>
-
             </tr>
             @endforeach
         </tbody>
-        <tfoot>
-
-        </tfoot>
     </table>
 </div>
 <script>
