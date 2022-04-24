@@ -19,7 +19,7 @@ class HelpFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'message' => 'I am not able to login ',
+            'message' => $this->faker->text(),
             //
         ];
     }

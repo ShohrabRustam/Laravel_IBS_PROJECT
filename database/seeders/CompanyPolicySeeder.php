@@ -15,7 +15,7 @@ class CompanyPolicySeeder extends Seeder
     public function run()
     {
         //
-        CompanyPolicy::factory(10000);
+        CompanyPolicy::factory(10000)->create();
 
     }
 }

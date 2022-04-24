@@ -16,7 +16,7 @@ class HelpSeeder extends Seeder
     public function run()
     {
         //
-        help::factory(1000)->create();
+        help::factory(10000)->create();
 
     }
 }
