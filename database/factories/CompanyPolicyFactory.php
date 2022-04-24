@@ -27,7 +27,7 @@ class CompanyPolicyFactory extends Factory
             'p_desc' => $this->faker->text,
             'p_price' => $this->faker->numberBetween(1000, 5000),
             'c_price' => $this->faker->numberBetween(20000, 50000),
-            'policy_period' => $this->faker->numberBetween(1, 24),  //
+            'policy_period' => rand(1,5)*12,  //
         ];
     }
 }
