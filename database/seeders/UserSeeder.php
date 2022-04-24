@@ -2,11 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\help;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
-class HelpSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +18,6 @@ class HelpSeeder extends Seeder
     public function run()
     {
         //
-        help::factory(1000)->create();
-
+        User::factory(1000)->create();
     }
 }

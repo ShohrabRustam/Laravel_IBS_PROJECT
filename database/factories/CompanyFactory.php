@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class CompanyFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'r_no'=>$this->faker->unique()->numberBetween(135012233,9999999999 ),
+            'name' => $this->faker->name(),
+            'about'=>$this->faker->text(20)
         ];
     }
 }

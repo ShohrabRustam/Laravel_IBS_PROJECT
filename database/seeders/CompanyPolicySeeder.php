@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\CompanyPolicy;
 class CompanyPolicySeeder extends Seeder
 {
     /**
@@ -15,5 +15,7 @@ class CompanyPolicySeeder extends Seeder
     public function run()
     {
         //
+        CompanyPolicy::factory(10000);
+
     }
 }
