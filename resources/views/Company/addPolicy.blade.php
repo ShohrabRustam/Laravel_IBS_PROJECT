@@ -33,16 +33,6 @@ Add Policy
                             </tr>
                         </tbody>
                     </table>
-                    @if (Session::has('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ Session::get('suceess') }}
-                    </div>
-                    @endif
-                    @if (Session::has('fail'))
-                    <div class="alert alert-danger" role="alert">
-                        {{ Session::get('fail') }}
-                    </div>
-                    @endif
                     <form autocomplete="off" action=" {{ URL::to('/addPolicy') }} " method="POST" class="form" role="form">
                         @csrf
                         <fieldset>
