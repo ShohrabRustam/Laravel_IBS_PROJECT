@@ -11,11 +11,11 @@ Risk Analysis
             <hr class="my-5">
             <!-- form contact -->
             <div class="card card-outline-secondary">
-                <p class="description">Feel free to contact us if you need any assistance, any help or another question.
+                <p class="description custom" style="margin-top: 30px">Please provide the correct details for best price it will be varified.
                 </p>
 
                 <div class="card-header">
-                    <h3 class="mb-0">Add Policy </h3>
+                    <h3 class="mb-0">More Details </h3>
                 </div>
                 <div class="card-body">
                     @if (Session::has('success'))
@@ -28,97 +28,76 @@ Risk Analysis
                         {{ Session::get('fail') }}
                     </div>
                     @endif
-                    <form autocomplete="off" action=" {{ URL::to('/addPolicy') }} " method="POST" class="form" role="form">
+                    <form autocomplete="off" action=" {{ URL::to('/riskAnalysis') }} " method="POST" class="form" role="form">
                         @csrf
                         <fieldset>
-                            <input type="hidden" name="companyid" value="{{ $company['id'] }}">
-                            @error('policyname')
+                            @error('name')
                             <div class="alert alert-danger" role="alert">
                                 {{ $message }}
                             </div>
                             @enderror
 
-                            <label class="mb-0" for="policyname">Policy Name</label>
+                            <label class="mb-0" for="policyname">Full Name</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input class="form-control" name="policyname" type="text" value="{{ old('policyname') }}">
+                                    <input class="form-control" name="name" type="text" value="{{ old('name') }}">
                                 </div>
                             </div>
 
-                            @error('policytype')
+                            @error('smoke')
                             <div class="alert alert-danger" role="alert">
                                 {{ $message }}
                             </div>
                             @enderror
-                            <label class="mb-0" for="policytype">Policy Type</label>
+                            <label class="mb-0" for="policytype">Smoke</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <select class="form-control" name="policytype" placeholder="Select Policy">
-                                        <option class="form-control" value="">Select Insurance</option>
-                                        <option class="form-control" value="Health">Health</option>
-                                        <option class="form-control" value="Life">Life</option>
-                                        <option class="form-control" value="Bike">Bike</option>
-                                        <option class="form-control" value="Car">Car</option>
+                                    <select class="form-control" name="smoke" placeholder="Select Policy">
+                                        <option class="form-control" value="">Select Field</option>
+                                        <option class="form-control" value="Health">Yes</option>
+                                        <option class="form-control" value="Life">No</option>
+                                        <option class="form-control" value="Bike">Sometimes</option>
+
                                     </select>
                                 </div>
                             </div>
 
-                            @error('p_desc')
+
+                            @error('smoke')
                             <div class="alert alert-danger" role="alert">
                                 {{ $message }}
                             </div>
                             @enderror
-
-                            <label class="mb-0" for="p_desc">Policy Desc</label>
+                            <label class="mb-0" for="policytype">Alchol</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input name="p_desc" class="form-control" type="text" value="{{ old('p_desc') }}">
+                                    <select class="form-control" name="smoke" placeholder="Select Policy">
+                                        <option class="form-control" value="">Select Field</option>
+                                        <option class="form-control" value="Health">Yes</option>
+                                        <option class="form-control" value="Life">No</option>
+                                        <option class="form-control" value="Bike">Sometimes</option>
+
+                                    </select>
                                 </div>
                             </div>
 
 
-                            @error('p_price')
+
+
+                            @error('DOB')
                             <div class="alert alert-danger" role="alert">
                                 {{ $message }}
                             </div>
                             @enderror
 
-                            <label class="mb-0" for="p_price">Policy Price</label>
+                            <label class="mb-0" for="policy_period">D O B </label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input name="p_price" class="form-control" type="number" min="0" value="{{ old('p_price') }}">
-                                </div>
-                            </div>
-
-
-                            @error('c_price')
-                            <div class="alert alert-danger" role="alert">
-                                {{ $message }}
-                            </div>
-                            @enderror
-
-                            <label class="mb-0" for="c_price">Claim Price</label>
-                            <div class="row mb-1">
-                                <div class="col-lg-12">
-                                    <input name="c_price" class="form-control" type="number" min="0" value="{{ old('c_price') }}">
-                                </div>
-                            </div>
-
-
-                            @error('policy_period')
-                            <div class="alert alert-danger" role="alert">
-                                {{ $message }}
-                            </div>
-                            @enderror
-
-                            <label class="mb-0" for="policy_period">Month Duration </label>
-                            <div class="row mb-1">
-                                <div class="col-lg-12">
-                                    <input name="policy_period" class="form-control" type="number" value="{{ old('policy_period') }}">
+                                    <input name="dob" class="form-control" type="date" value="{{ old('policy_period') }}">
                                 </div>
                             </div>
                             <br>
-                            <button class="btn btn-secondary btn-lg float-right" type="submit">Register Policy</button>
+                            <button class="btn btn-secondary btn-lg float-right" type="submit">Show Policies</button>
                             <br>
                         </fieldset>
                     </form>
