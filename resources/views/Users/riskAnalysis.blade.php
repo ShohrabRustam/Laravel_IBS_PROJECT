@@ -11,7 +11,8 @@ Risk Analysis
             <hr class="my-5">
             <!-- form contact -->
             <div class="card card-outline-secondary">
-                <p class="description custom" style="margin-top: 30px">Please provide the correct details for best price it will be varified.
+                <p class="description custom" style="margin-top: 30px">Please provide the correct details for best price
+                    it will be varified.
                 </p>
 
                 <div class="card-header">
@@ -28,7 +29,8 @@ Risk Analysis
                         {{ Session::get('fail') }}
                     </div>
                     @endif
-                    <form autocomplete="off" action=" {{ URL::to('/riskAnalysis') }} " method="POST" class="form" role="form">
+                    <form autocomplete="off" action=" {{ URL::to('/riskAnalysis') }} " method="POST" class="form"
+                        role="form">
                         @csrf
                         <fieldset>
                             @error('name')
@@ -43,45 +45,72 @@ Risk Analysis
                                     <input class="form-control" name="name" type="text" value="{{ old('name') }}">
                                 </div>
                             </div>
-
-                            @error('smoke')
-                            <div class="alert alert-danger" role="alert">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                            <label class="mb-0" for="policytype">Smoke</label>
+                            <br>
+                            <label class="mb-0" for="smoke">Do You Smoke ? </label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <select class="form-control" name="smoke" placeholder="Select Policy">
+                                    <select class="form-control" name="smoke" required>
                                         <option class="form-control" value="">Select Field</option>
-                                        <option class="form-control" value="Health">Yes</option>
-                                        <option class="form-control" value="Life">No</option>
-                                        <option class="form-control" value="Bike">Sometimes</option>
+                                        <option class="form-control" value="10">Yes</option>
+                                        <option class="form-control" value="0">No</option>
+                                        <option class="form-control" value="5">Sometimes</option>
 
                                     </select>
                                 </div>
                             </div>
 
+                            <br>
 
-                            @error('smoke')
-                            <div class="alert alert-danger" role="alert">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                            <label class="mb-0" for="policytype">Alchol</label>
+                            <label class="mb-0" for="drink">Do you Drink ? </label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <select class="form-control" name="smoke" placeholder="Select Policy">
+                                    <select class="form-control" name="drink" placeholder="Select Policy" required>
                                         <option class="form-control" value="">Select Field</option>
-                                        <option class="form-control" value="Health">Yes</option>
-                                        <option class="form-control" value="Life">No</option>
-                                        <option class="form-control" value="Bike">Sometimes</option>
+                                        <option class="form-control" value="10">Yes</option>
+                                        <option class="form-control" value="0">No</option>
+                                        <option class="form-control" value="5">Sometimes</option>
 
                                     </select>
                                 </div>
                             </div>
 
+                            <br>
+                            <label class="mb-0" for="health">Do you encountered with any type of health problems in the
+                                past ?</label>
+                            <div class="row mb-1">
+                                <div class="col-lg-12">
+                                    <select class="form-control" name="health" placeholder="Select Policy" required>
+                                        <option class="form-control" value="">Select Field</option>
+                                        <option class="form-control" value="10">Yes</option>
+                                        <option class="form-control" value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
 
+                            <br>
+                            <label class="mb-0" for="disease">Cancer or Tumor or Maliganncy ?</label>
+                            <div class="row mb-1">
+                                <div class="col-lg-12">
+                                    <select class="form-control" name="smoke" placeholder="Select Policy" required>
+                                        <option class="form-control" value="">Select Field</option>
+                                        <option class="form-control" value="100">Yes</option>
+                                        <option class="form-control" value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <label class="mb-0" for="disease">Bleeding or Blood Disoder ?</label>
+                            <div class="row mb-1">
+                                <div class="col-lg-12">
+                                    <select class="form-control" name="smoke" placeholder="Select Policy" required>
+                                        <option class="form-control" value="">Select Field</option>
+                                        <option class="form-control" value="20">Yes</option>
+                                        <option class="form-control" value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <br>
 
 
                             @error('DOB')
@@ -90,13 +119,15 @@ Risk Analysis
                             </div>
                             @enderror
 
-                            <label class="mb-0" for="policy_period">D O B </label>
+                            <label class="mb-0" for="dob">D O B </label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <input name="dob" class="form-control" type="date" value="{{ old('policy_period') }}">
+                                    <input name="dob" class="form-control" type="date"
+                                        value="{{ old('policy_period') }}" required>
                                 </div>
                             </div>
                             <br>
+                            <br><br>
                             <button class="btn btn-secondary btn-lg float-right" type="submit">Show Policies</button>
                             <br>
                         </fieldset>
