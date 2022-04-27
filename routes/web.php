@@ -41,9 +41,8 @@ Route::get('/lifeInsurance', [InsuranceController::class, '_life']);
 Route::get('/healthInsurance', [InsuranceController::class, '_health']);
 Route::get('/carInsurance', [InsuranceController::class, '_car']);
 Route::get('/bikeInsurance', [InsuranceController::class, '_bike']);
-Route::get('/riskanalysis',function(){
-    return view('Users.riskAnalysis');
-});
+Route::get('/riskAnalysis',[UserController::class,'_riskanalysis'])->name('riskAnalysis');
+Route::post('/riskAnalysis',[UserController::class,'_risk'])->name('riskAnalysis');
 
 Route::get('/companies', [CompanyController::class, '_companies']);
 Route::get('/addCompany', [CompanyController::class, '_addCompany']);

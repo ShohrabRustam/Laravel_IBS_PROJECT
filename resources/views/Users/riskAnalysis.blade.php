@@ -33,20 +33,7 @@ Risk Analysis
                         role="form">
                         @csrf
                         <fieldset>
-                            @error('name')
-                            <div class="alert alert-danger" role="alert">
-                                {{ $message }}
-                            </div>
-                            @enderror
-
-                            <label class="mb-0" for="policyname">Full Name</label>
-                            <div class="row mb-1">
-                                <div class="col-lg-12">
-                                    <input class="form-control" name="name" type="text" value="{{ old('name') }}">
-                                </div>
-                            </div>
-                            <br>
-                            <label class="mb-0" for="smoke">Do You Smoke ? </label>
+                             <label class="mb-0" for="smoke">Do You Smoke ? </label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
                                     <select class="form-control" name="smoke" required>
@@ -91,7 +78,7 @@ Risk Analysis
                             <label class="mb-0" for="disease">Cancer or Tumor or Maliganncy ?</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <select class="form-control" name="smoke" placeholder="Select Policy" required>
+                                    <select class="form-control" name="cancer" placeholder="Select Policy" required>
                                         <option class="form-control" value="">Select Field</option>
                                         <option class="form-control" value="100">Yes</option>
                                         <option class="form-control" value="0">No</option>
@@ -102,7 +89,7 @@ Risk Analysis
                             <label class="mb-0" for="disease">Bleeding or Blood Disoder ?</label>
                             <div class="row mb-1">
                                 <div class="col-lg-12">
-                                    <select class="form-control" name="smoke" placeholder="Select Policy" required>
+                                    <select class="form-control" name="blood" placeholder="Select Policy" required>
                                         <option class="form-control" value="">Select Field</option>
                                         <option class="form-control" value="20">Yes</option>
                                         <option class="form-control" value="0">No</option>
