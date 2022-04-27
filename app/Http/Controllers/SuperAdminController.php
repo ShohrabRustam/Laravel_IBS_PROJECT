@@ -47,6 +47,7 @@ class SuperAdminController extends Controller
     public function _logout()
     {
         Session::forget('user');
+        Session::forget('risks');
         return redirect('/superadminLogin');
     }
 
