@@ -283,6 +283,6 @@ class UserController extends Controller
             $risk = $risk + ($age - 22);
         }
         $request->session()->put('risks', $risk);
-        return Session::get('risks');
+        return redirect('/');
     }
 }
